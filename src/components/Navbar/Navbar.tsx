@@ -88,33 +88,23 @@ const Navbar = () => {
 
   const accountInfoItems = [
     {
-      key: '1',
-      label: (
-        <div className="user-info-container">
-          <CustomAvatar image={null} text="User" size={40} />
-          <div className="navbar-account-info">
-            <p className="sidebar-accountinfo-item">user@gmail.com</p>
-            <p>Role: Admiddddd</p>
-          </div>
-        </div>
-      ),
-      disabled: true,
-      onClick: () => console.log('user info'),
-    },
-    {
       key: '2',
       label: (
-        <a style={{ color: 'black' }} href="/user">
+        <a style={{ color: '#177C9A' }} href="/user">
           Switch Admin
         </a>
       ), // Navigate to /user
-      icon: <ProfileIcon style={{ stroke: 'black', width: '18px', height: '18px' }} />,
+      icon: <ProfileIcon style={{ stroke: '#177C9A', width: '18px', height: '18px' }} />,
       onClick: () => console.log('profile'),
     },
     {
       key: '3',
-      label: <p onClick={handleLogout}>logout</p>,
-      icon: <LogoutIcon style={{ stroke: 'black', width: '18px', height: '18px' }} />,
+      label: (
+        <p style={{ color: '#177C9A' }} onClick={handleLogout}>
+          logout
+        </p>
+      ),
+      icon: <LogoutIcon style={{ stroke: '#177C9A', width: '18px', height: '18px' }} />,
     },
   ]
 
@@ -140,11 +130,6 @@ const Navbar = () => {
                 },
               }}
               spaceBetween={10}
-              navigation={{
-                nextEl: '.swiper-button-next-cus',
-                prevEl: '.swiper-button-prev-cus',
-              }}
-              // modules={[Pagination, Navigation]}
             >
               {filteredImages.map((item: any, index: any) => (
                 <SwiperSlide key={index}>
@@ -158,18 +143,17 @@ const Navbar = () => {
                       <p className="item-date">
                         {calculateElapsedTime(index, item.startTime)}
                       </p>{' '}
-                      {/* Pass index */}
                     </div>
                   </div>
-                  <img src={turn} className="turn-off" alt="" onClick={() => toggleStatus(item)} />
+                  <img
+                    style={{ width: '24px' }}
+                    src={turn}
+                    className="turn-off"
+                    alt=""
+                    onClick={() => toggleStatus(item)}
+                  />
                 </SwiperSlide>
               ))}
-              <div className="swiper-button-next-cus swiper-button-next">
-                <img src={arrowleft} alt="" />
-              </div>
-              <div className="swiper-button-prev-cus swiper-button-prev">
-                <img src={arrowright} alt="" />
-              </div>
             </Swiper>
           ) : (
             filteredImages.map((item: any, index: any) => (

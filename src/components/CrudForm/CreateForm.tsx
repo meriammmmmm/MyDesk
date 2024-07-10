@@ -155,35 +155,17 @@ const CreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         <div style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}>
           <Switch {...label} checked={formData.status} onChange={handleSwitchChange} />
           <p className="statusFormat">{formData.status ? 'Active' : 'Inactive'}</p>{' '}
-          {/* Conditionally render the label */}
         </div>
         <p className="user-acount-status"> User Account Status</p>{' '}
       </div>
 
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          type="submit"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            backgroundColor: '#0188F7',
-          }}
-          size="xl"
-          onClick={handleSubmit}
-        >
+        <Button type="submit" className="submit-button-form" size="xl" onClick={handleSubmit}>
           Submit
         </Button>
         <Button
           type="button"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            color: '#0188F7',
-            border: '1px solid #0188F7',
-            backgroundColor: 'white',
-          }}
+          className="cancel-button-form"
           onClick={() => {
             onClosePopup()
             setFormData({

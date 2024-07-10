@@ -10,14 +10,14 @@ const AuthNavigation = ({ forWhat }: ForgetPasswordProp) => {
       {forWhat === 'login' ? (
         <>
           <div className="forget-password-link">
-            <a onClick={() => navigate('/forget-password')}>Forgot password?</a>
+            <div onClick={() => navigate('/forget-password')}>Forgot password?</div>
           </div>
         </>
       ) : (
         <>
           <nav>
             <span>Already have an account.</span>
-            <a onClick={() => navigate('/login')}>Login?</a>
+            <div onClick={() => navigate('/login')}>Login?</div>
           </nav>
         </>
       )}

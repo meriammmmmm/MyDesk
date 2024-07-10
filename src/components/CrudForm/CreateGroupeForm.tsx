@@ -204,33 +204,16 @@ const CreateGroupeForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         />
       </div>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          type="submit"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            backgroundColor: '#0188F7',
-          }}
-          size="xl"
-          onClick={handleSubmit}
-        >
+        <Button className="submit-button-form" type="submit" size="xl" onClick={handleSubmit}>
           Submit
         </Button>
         <Button
           type="button"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            color: '#0188F7',
-            border: '1px solid #0188F7',
-            backgroundColor: 'white',
-          }}
           onClick={() => {
             onClosePopup()
           }}
           size="xl"
+          className="cancel-button-form"
         >
           Cancel
         </Button>

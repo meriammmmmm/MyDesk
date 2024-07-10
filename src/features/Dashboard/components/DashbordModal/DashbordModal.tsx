@@ -192,11 +192,11 @@ const Modal: React.FC<ModalProps> = ({
                 aria-label="Disk Size"
                 defaultValue={diskValue}
                 getAriaValueText={(value) => `${value} GB`}
-                step={2}
+                step={16}
                 marks={diskmarks}
                 valueLabelDisplay="on"
-                min={2}
-                max={12}
+                min={16}
+                max={512}
                 disabled={switchOn}
                 onChange={handleDiskChange}
               />
@@ -219,7 +219,7 @@ const Modal: React.FC<ModalProps> = ({
                 marks={rammarks}
                 valueLabelDisplay="on"
                 min={2}
-                max={12}
+                max={16}
                 disabled={switchOn}
                 onChange={handleRamChange}
               />

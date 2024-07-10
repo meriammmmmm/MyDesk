@@ -41,23 +41,30 @@ const ImageGroupeActionControl: React.FC<{
       }
     })
   }
+  const handleView = async (userId: string) => {
+    setDrawerVisible(true)
+  }
 
+  const actions = [
+    { id: 1, icon: <BiEditAlt />, handler: handleUpdate },
+    { id: 2, icon: <AiOutlineDelete />, handler: handleRemove },
+    { id: 3, icon: <AiOutlineEye />, handler: handleView },
+  ]
   return (
     <Space wrap>
       <div className="action-popup">
-        <Button onClick={handleUpdate} className="action-popup-button">
-          <BiEditAlt />
-        </Button>
-
-        <Button onClick={() => handleRemove(id)} className="action-popup-button">
-          <AiOutlineDelete />
-        </Button>
-
-        <Button onClick={() => {}} className="action-popup-button">
-          <AiOutlineEye />
-        </Button>
+        {actions.map((action, index) => (
+          <Button
+            key={index}
+            onClick={() => {
+              action.handler(id)
+            }}
+            className="action-popup-button"
+          >
+            {action.icon}
+          </Button>
+        ))}
       </div>
-
       <EditGroupeForm id={id} visible={drawerVisible} onClose={() => setDrawerVisible(false)} />
     </Space>
   )

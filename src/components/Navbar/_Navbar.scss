@@ -68,14 +68,12 @@
     }
   }
   .item-image {
-    border-radius: 12px;
-    background: #fafafa;
     width: 38px;
     display: flex;
     align-items: center;
     img {
-      width: 40px;
-      height: 32px;
+      width: 25px;
+      height: 26px;
     }
     .timer {
       width: 28px;
@@ -142,7 +140,7 @@
 }
 .swiper-reviews {
   overflow: hidden !important;
-  width: 88%;
+  width: 49rem;
 }
 
 .swiper-slide {
@@ -154,7 +152,7 @@
   justify-content: space-around;
 }
 
-.swiper-button-next {
+.swiper-button-next-cus {
   background-image: url('../../../../assets/icons/arrow-left.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -165,7 +163,7 @@
   z-index: 1;
 }
 
-.swiper-button-prev {
+.swiper-button-prev-cus {
   background-image: url('../../../../assets/icons/arrow-right.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -178,5 +176,4 @@
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  display: none !important;
 }

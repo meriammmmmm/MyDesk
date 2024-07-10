@@ -50,7 +50,8 @@ const ActionControl: React.FC<{
   }
 
   const handleView = async (userId: string) => {
-    // Implement your view logic here
+    setDrawerVisible(true)
+    dispatch(fetchUserById(id))
   }
 
   const handleRemove = (userId: string) => {
@@ -69,36 +70,26 @@ const ActionControl: React.FC<{
       }
     })
   }
+  const actions = [
+    { id: 1, icon: <BiEditAlt />, handler: handleUpdate },
+    { id: 2, icon: <AiOutlineDelete />, handler: handleRemove },
+    { id: 3, icon: <AiOutlineEye />, handler: handleView },
+  ]
 
   return (
     <Space wrap>
       <div className="action-popup">
-        <Button
-          onClick={() => {
-            handleUpdate(id)
-          }}
-          className="action-popup-button"
-        >
-          <BiEditAlt />
-        </Button>
-
-        <Button
-          onClick={() => {
-            handleRemove(id)
-          }}
-          className="action-popup-button"
-        >
-          <AiOutlineDelete />
-        </Button>
-
-        <Button
-          onClick={() => {
-            handleView(id)
-          }}
-          className="action-popup-button"
-        >
-          <AiOutlineEye />
-        </Button>
+        {actions.map((action, index) => (
+          <Button
+            key={index}
+            onClick={() => {
+              action.handler(id)
+            }}
+            className="action-popup-button"
+          >
+            {action.icon}
+          </Button>
+        ))}
       </div>
 
       <CrudForm
