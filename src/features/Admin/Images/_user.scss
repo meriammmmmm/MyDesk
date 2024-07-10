@@ -1,0 +1,10 @@
+@import '@assets/styles/abstracts';
+.client-container {
+  @include flexbox(column, space-between, stretch);
+  height: 100%;
+  .client-data {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

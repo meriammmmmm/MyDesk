@@ -1,0 +1,77 @@
+.single-option {
+  position: relative;
+  width: 78px;
+  height: 57px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  border: 0.5px solid #777998;
+  cursor: pointer;
+  &.normal,
+  &.important,
+  &.urgent {
+    > div > p {
+      color: #000;
+      text-transform: capitalize;
+    }
+  }
+  &.normal {
+    border: 0.5px solid #50ccc5;
+    background: rgba(80, 204, 197, 0.35);
+  }
+  &.important {
+    border: 0.5px solid #ffc200;
+    background: #fff4d2;
+  }
+  &.urgent {
+    border: 0.5px solid #ff5734;
+    background: #ffe5e5;
+  }
+  .icon-active {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: -6px;
+    stroke: rgba(80, 107, 204, 0.8);
+    &.normal {
+      stroke: #50ccc5;
+    }
+    &.important {
+      stroke: #ffc200;
+    }
+    &.urgent {
+      stroke: #ff5734;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    svg {
+      font-size: 25px;
+      color: #363853;
+    }
+    p {
+      color: #363853;
+      font-family: Poppins;
+      font-size: 12px;
+      font-weight: 300;
+    }
+  }
+}
+.option-active {
+  background-color: rgba(80, 107, 204, 0.8);
+  box-shadow: 0px 5px 12px 0px rgba(115, 137, 214, 0.37);
+  transition: 0.3s ease-in-out;
+
+  div {
+    svg,
+    p {
+      color: #fff;
+    }
+  }
+}

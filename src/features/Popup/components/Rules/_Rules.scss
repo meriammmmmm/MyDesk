@@ -1,0 +1,88 @@
+@import '@assets/styles/abstracts';
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px;
+  height: fit-content;
+  box-shadow: 0px 4px 16px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  gap: 28.59px;
+  background: #fff;
+  width: 100%;
+  .rules-toggled-container {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      .rules-toggled-title {
+        font-family: Inter;
+        font-size: 22px;
+        font-weight: 400;
+      }
+      span {
+        background: #eee;
+        padding: 5px 10px;
+        border-radius: 17px;
+        font-weight: 300;
+      }
+      svg {
+        font-size: 20px;
+      }
+    }
+    .arrow-down-toggle {
+      font-size: 30px;
+      cursor: pointer;
+    }
+  }
+  .rules-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media screen and (max-width: 1550px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    min-height: 400px;
+    .rules-schedule-part,
+    .rules-audience-part {
+      border-right: 1px solid #9ba2ae;
+      @media screen and (max-width: 1550px) {
+        border-bottom: 1px solid #9ba2ae;
+        border-right: none;
+      }
+
+      padding: 20px 17px;
+    }
+    .rules-schedule-part {
+      .rules-date-components {
+        @include flexbox(column, center, center);
+        gap: 15px;
+      }
+      .add-new-role-shchedule {
+        width: 100%;
+        height: 42px;
+        @include flexbox(row, center, center);
+        border-radius: 25px;
+        border: 1px solid #5bc949;
+        background: rgba(91, 201, 73, 0.31);
+        color: #2e7224;
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 15px;
+      }
+    }
+    .rules-popup-behavior-part {
+      padding: 20px 17px;
+    }
+  }
+  .toggled {
+    display: none;
+  }
+}
+.filtred {
+  filter: grayscale(1);
+}

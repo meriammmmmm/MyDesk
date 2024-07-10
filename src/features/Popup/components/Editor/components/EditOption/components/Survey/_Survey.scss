@@ -1,0 +1,60 @@
+@forward './components/Qustion/Question';
+@forward './components/CheckboxType/CheckboxType';
+@forward './components/RadioType/RadioType';
+@import '@assets/styles/abstracts';
+.survey-container {
+  width: 100%;
+  padding: 20px;
+  .survey-questions-container {
+    margin-top: 30px;
+    width: 100%;
+    @include flexbox(column, center, center);
+    gap: 15px;
+  }
+  @include flexbox(column, center, center);
+  .survey-main-title {
+    color: #363853;
+    font-size: 30px;
+  }
+  .survey-description {
+    margin-bottom: 15px;
+  }
+  .add-question-btn {
+    border-radius: 10px;
+    background: #605dce;
+    color: #fff;
+    @include flexbox(row, center, center);
+    width: 141px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+.survey-types {
+  width: 121px;
+  @include flexbox(column, start, start);
+  gap: 6px;
+  .survey-types-btn {
+    padding: 0px 5px;
+    height: 30px;
+    border: 1px solid #615dce98;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #615dce5f;
+      border-radius: 5px;
+    }
+    cursor: pointer;
+    width: 100%;
+    @include flexbox(row, start, center);
+    width: 100%;
+    gap: 7px;
+    svg {
+      color: #605dce;
+      font-size: 16px;
+    }
+    span {
+      color: #000;
+      font-size: 13px;
+    }
+  }
+}

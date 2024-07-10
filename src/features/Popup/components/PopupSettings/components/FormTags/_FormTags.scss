@@ -1,0 +1,55 @@
+.form-add-tags {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+
+  .ant-color-picker-trigger {
+    padding: 3px;
+  }
+}
+.error-message-tag {
+  color: rgb(255, 39, 39);
+  text-align: start;
+  margin-right: auto;
+  padding-left: 11px;
+  margin-top: -10px;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+.list-tags {
+  margin-right: auto;
+  margin-top: 5px;
+  .ant-tag {
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+}
+.custom-swal-popup {
+  background: #fff;
+  border-radius: 10px;
+}
+
+.swal2-title {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: center;
+  color: #f04438;
+}
+.swal2-actions {
+  flex-direction: row-reverse !important;
+  .swal2-cancel {
+    color: #0188f7 !important;
+    border: 1px solid #0188f7 !important
+    ;
+    background-color: white !important;
+  }
+  .swal2-confirm {
+    color: white !important;
+    border: 1px solid #0188f7 !important
+    ;
+    background-color: #0188f7 !important;
+  }
+}

@@ -1,0 +1,33 @@
+.popup-response-container {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background-color: #ecf0f3;
+  padding: 10px 30px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-top: 10px;
+  svg {
+    font-size: 21px;
+    color: #78828a96;
+  }
+  .popup-response-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .popup-response-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+      color: #78828a;
+    }
+  }
+  .popup-response-reaction-file {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+}

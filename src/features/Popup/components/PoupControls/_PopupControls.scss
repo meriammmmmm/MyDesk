@@ -1,0 +1,176 @@
+@forward './components/DesktopPreview/DesktopPreview';
+@forward './components/MobilePreview/MobilePreview';
+@import '@assets/styles/abstracts';
+.popup-controls-container {
+  @include flexbox(row, space-between, center);
+  box-shadow: 0px 4px 16px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 15px 20px;
+  .popup-controls-creation {
+    width: 100%;
+    @include flexbox(row, space-between, center);
+    gap: 30px;
+    .popup-creation-description {
+      width: 100%;
+      color: #777998;
+      font-size: 14px;
+    }
+    .popup-controls-creation-btn {
+      @include flexbox(row, center, center);
+      gap: 14px;
+      min-width: fit-content;
+      height: 44px;
+      border-radius: 10px;
+      padding: 0px 11px;
+      background: #506bcc;
+      box-shadow: 0px 5px 12px 0px rgba(83, 94, 93, 0.35);
+      @media screen and (max-width: 920px) {
+        width: 50px;
+      }
+      svg {
+        color: #fff;
+        font-size: 22px;
+      }
+      span {
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+        @media screen and (max-width: 920px) {
+          display: none;
+        }
+      }
+    }
+  }
+  .popup-save-control {
+    width: 100%;
+    @include flexbox(column, flex-start, start);
+    p {
+      color: #777998;
+      font-size: 13px;
+      font-weight: 300;
+    }
+    .title-popup-input {
+      width: 95%;
+      border: none;
+      background-color: #fafafa;
+      outline: none;
+      font-size: 18px;
+    }
+  }
+  .popup-btns-control {
+    @include flexbox(row, flex-start, center);
+    gap: 21px;
+    @media screen and (max-width: 920px) {
+      gap: 10px;
+    }
+    .popup-save-control-draft {
+      border-radius: 10px;
+      background: #d7d9e1;
+      font-size: 12px;
+      font-weight: 300;
+      padding: 6px 14px;
+    }
+    .popup-save-close-btn {
+      @include flexbox(row, center, center);
+      gap: 14px;
+      border-radius: 10px;
+      border: 1px solid #777998;
+      width: 153px;
+      height: 44px;
+      background: #fafafa;
+      &:hover {
+        background-color: #506bcc;
+        color: #fff;
+        transition: 0.3s;
+      }
+      @media screen and (max-width: 920px) {
+        width: 50px;
+      }
+      svg {
+        font-size: 18px;
+      }
+      span {
+        font-size: 13px;
+        font-weight: 300;
+        @media screen and (max-width: 920px) {
+          display: none;
+        }
+      }
+    }
+    .popup-more-btn {
+      @media screen and (max-width: 920px) {
+        display: none;
+      }
+      @include flexbox(row, center, center);
+      gap: 31px;
+      border-radius: 10px;
+      border: 1px solid #777998;
+      width: 122px;
+      height: 44px;
+      background: #fafafa;
+      svg {
+        font-size: 18px;
+      }
+      span {
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+    .popup-cancel-btn {
+      background-color: rgb(237, 94, 104);
+      color: #fff;
+      border: none;
+      &:hover {
+        background-color: rgb(237, 94, 104);
+        box-shadow: 0px 5px 12px 0px rgb(237, 94, 104);
+      }
+    }
+    .popup-set-live-btn {
+      @include flexbox(row, center, center);
+      gap: 14px;
+      width: 145px;
+      height: 44px;
+      border-radius: 10px;
+      background: #50ccc5;
+      box-shadow: 0px 5px 12px 0px rgba(80, 204, 197, 0.35);
+      &:hover {
+        box-shadow: none;
+      }
+      @media screen and (max-width: 920px) {
+        width: 50px;
+      }
+      svg {
+        color: #fff;
+        font-size: 18px;
+      }
+      span {
+        font-size: 13px;
+        font-weight: 300;
+        color: #fff;
+        @media screen and (max-width: 920px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.mobile-desktop-preview {
+  @include flexbox(column, start, start);
+  gap: 5px;
+  .desktop-preview-btn,
+  .mobile-preview-btn {
+    @include flexbox(row, start, center);
+    gap: 10px;
+    padding: 0px 5px;
+    border-radius: 5px;
+    width: 123px;
+    height: 44px;
+    background: #fcfbfb;
+    svg {
+      font-size: 18px;
+    }
+    &:hover {
+      background: #f0eded;
+    }
+  }
+}

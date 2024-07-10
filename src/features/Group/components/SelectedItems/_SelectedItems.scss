@@ -1,0 +1,27 @@
+@import '@assets/styles/abstracts';
+
+.group-items-selected {
+  @include flexbox(row, space-between, center);
+  margin: 20px 0px;
+  nav {
+    @include flexbox(row, start, center);
+    gap: 8px;
+    span {
+      @include flexbox(row, center, center);
+      font-size: 18px;
+      background-color: #506bcc;
+      min-width: 40px;
+      min-height: 35px;
+      color: #fff;
+      border-radius: 10px;
+      padding: 0px 5px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  div {
+    @include flexbox(row, center, center);
+    gap: 5px;
+  }
+}

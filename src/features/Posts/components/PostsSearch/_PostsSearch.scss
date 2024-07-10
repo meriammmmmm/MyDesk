@@ -1,0 +1,116 @@
+@import '@assets/styles/abstracts';
+.post-search-container {
+  width: 100%;
+  @include flexbox(column, start, end);
+  gap: 15px;
+  .new-message-button {
+    @include flexbox(row, center, center);
+    gap: 6px;
+    border-radius: 10px;
+    border: 1px solid #777998;
+    background: #605dce;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 10px 11px;
+    svg {
+      font-size: 23px;
+    }
+    &:hover {
+      transition: 0.4s;
+      box-shadow: #615dcec6 0px 6px 15px;
+      transform: scale(1.03);
+    }
+  }
+  .search-part {
+    width: 100%;
+    height: 59px;
+    border-radius: 10px;
+    border: 1px solid #dbedff;
+    @include flexbox(row, start, center);
+    .search-part-filter-button {
+      height: 100%;
+      @include flexbox(row, center, center);
+      gap: 8px;
+      padding: 0px 21px;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 10px 0px 0px 10px;
+      border-right: 1px solid #dbedff;
+      color: #777998;
+      font-family: Inter;
+      font-size: 14px;
+      font-weight: 500;
+      svg {
+        font-size: 22px;
+      }
+    }
+    .hide-show-columns-btn {
+      height: 100%;
+      @include flexbox(row, center, center);
+      gap: 8px;
+      padding: 0px 21px;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 0px 10px 10px 0px;
+      border-left: 1px solid #dbedff;
+      color: #777998;
+      font-family: Inter;
+      font-size: 14px;
+      font-weight: 500;
+      svg {
+        font-size: 22px;
+      }
+    }
+    .search-part-input {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      color: #777998;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 0 23px;
+    }
+    .post-search-btn {
+      @include flexbox(row, center, center);
+      padding: 10px 13px;
+      border-radius: 8px;
+      border: 1px solid #dbedff;
+      background: #506bcc;
+      margin-right: 8px;
+      svg {
+        color: #fff;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .search-by-filter {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    .ant-select-selector {
+      min-width: 180px;
+      height: unset !important;
+    }
+    .btn-reset-filter {
+      width: fit-content;
+      color: #777998;
+      font-family: Inter;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 0px 13px;
+      border-radius: 5px;
+      background: #eee;
+      transition: background 0.3s ease;
+      &:hover {
+        background: #ccc;
+      }
+    }
+    .ant-select-multiple {
+      margin-top: -5px;
+    }
+  }
+}

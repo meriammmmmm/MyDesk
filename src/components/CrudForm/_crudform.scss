@@ -1,0 +1,64 @@
+@import '@assets/styles/abstracts';
+
+.crud-form-popup {
+  .crud-form-title {
+    @include flexbox(row, space-between, center);
+
+    height: 70px;
+    padding: 1.5rem;
+
+    p {
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      text-align: left;
+    }
+    span {
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+    }
+    .close-icon {
+      font-size: 30px;
+      color: #d8d8d8;
+      cursor: pointer;
+    }
+  }
+
+  form {
+    padding: 1.5rem;
+    margin-top: 1rem;
+    .crud-form-field {
+      height: 51.9px;
+      margin-bottom: 33px;
+      label {
+        margin-bottom: 19px;
+        font-size: 15px;
+        width: 117%;
+      }
+      input {
+        padding: 16px 14px;
+        border-radius: 6px;
+      }
+    }
+  }
+}
+.editForm {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0px !important;
+}
+.editFormStatus {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey !important;
+  width: 100%;
+}

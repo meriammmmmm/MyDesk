@@ -1,0 +1,10 @@
+@import '@assets/styles/abstracts';
+.role-container {
+  height: 100%;
+  @include flexbox(column, space-between, stretch);
+  .role-data {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

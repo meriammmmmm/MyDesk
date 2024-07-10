@@ -1,0 +1,42 @@
+@import '@assets/styles/abstracts';
+.question-container {
+  width: 100%;
+  position: relative;
+  @include flexbox(column, stretch, stretch);
+  gap: 15px;
+  border: 1px solid rgb(239, 239, 239);
+  border-radius: 2px;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  .question-answer-container {
+    @include flexbox(column, flex-start, flex-start);
+    gap: 10px;
+    .add-option-btn {
+      cursor: pointer;
+      @include flexbox(row, stretch, end);
+      gap: 10px;
+      svg {
+        font-size: 20px;
+        color: #605dce;
+      }
+      span {
+        font-weight: 500;
+        color: #605dce;
+      }
+    }
+  }
+  .remove-survey-question {
+    @include flexbox(row, center, center);
+    position: absolute;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+
+    cursor: pointer;
+    &:hover {
+      transform: rotate(0.5turn);
+      transition: 0.4s;
+    }
+  }
+}

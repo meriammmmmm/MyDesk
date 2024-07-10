@@ -1,0 +1,222 @@
+.auth-view {
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+  background-color: white;
+  .auth-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    .auth-header {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      h1 {
+        font-family: Poppins;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 54px;
+        text-align: left;
+        color: #177c9a;
+      }
+      p {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: #999999;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 28vw;
+      margin-top: 3rem;
+
+      @media screen and (max-width: 900px) {
+        width: 90vw;
+      }
+
+      & > label {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        position: relative;
+
+        .eye {
+          position: absolute;
+          cursor: pointer;
+          width: 2rem;
+          top: 4.65rem;
+          right: 1.5rem;
+
+          @media screen and (max-width: 450px) {
+            top: 5rem;
+          }
+        }
+
+        span {
+          color: #101828;
+          font-size: 1.8rem;
+          line-height: 2.7rem;
+          font-weight: 400;
+        }
+
+        .input {
+          border-radius: 2rem;
+        }
+
+        .error {
+          font-size: 1.25rem;
+          color: #ee7272;
+          margin-top: -0.8rem;
+          margin-left: 5px;
+        }
+      }
+
+      .password-input-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-top: -3rem;
+
+        .forget-password {
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 2.4rem;
+          color: #ba68c8;
+        }
+
+        .remember-me {
+          font-size: 1.6rem;
+          font-weight: 400;
+          line-height: 2.4rem;
+          color: #717171;
+        }
+      }
+
+      .auth-conform-button {
+        border-radius: 2rem;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+
+        .left,
+        .right {
+          height: 1px;
+          width: 50%;
+          background-color: #101828;
+          margin: 0 1rem;
+        }
+
+        .or {
+          font-size: 1.5rem;
+        }
+      }
+
+      .auth-with-google {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+
+        .auth-with-google-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          border-radius: 2rem;
+        }
+
+        & > span {
+          color: #666666;
+          font-weight: 400;
+          font-size: 1.4rem;
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+}
+.image-bloc {
+  background: rgba(235, 254, 255, 1);
+  gap: 3rem;
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 527px;
+  height: 713px;
+  border-radius: 0px 40px 40px 0px;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+  .image-desktop {
+    padding-top: 4rem;
+    padding-left: 5rem;
+  }
+  .login-description {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    width: 250px;
+    color: #177c9a;
+    span {
+      color: #0164fd;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+  }
+  .login-footer {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #728faa;
+  }
+}
+.login-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 142px;
+  color: #fff;
+  border-radius: 10px;
+  background: #0188f7;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+.link {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  color: #667085;
+}
+.ldap {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  text-align: center;
+  color: #0188f7;
+}

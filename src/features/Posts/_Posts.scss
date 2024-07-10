@@ -1,0 +1,189 @@
+@import '../../assets//styles/abstracts/mixins.scss';
+
+.form-boat-section {
+  width: 1369px;
+  padding: 0px 44px 0px;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 190px;
+  z-index: 1;
+  position: relative;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 35px 31px 35px 31px;
+
+  border-radius: 20px;
+
+  background: #ffffff;
+  @include mq(1700, max) {
+    width: 89%;
+  }
+
+  @include mq(851, max) {
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: center;
+    color: rgba(19, 81, 142, 1);
+
+    span {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 36px;
+      text-align: center;
+    }
+  }
+
+  .our_prices_features {
+    display: flex;
+    gap: 70px;
+    padding: 0 20px;
+    @include mq(1420, max) {
+      gap: 0rem;
+    }
+    @include mq(851, max) {
+      gap: 10px;
+      padding: 20px;
+    }
+  }
+}
+
+.form-boat {
+  height: 700px;
+  @include mq(1700, max) {
+    width: 89%;
+  }
+}
+
+.form-boat-background {
+  position: absolute;
+  z-index: -1;
+  left: -200px;
+  top: 90px;
+  width: 111%;
+  @include mq(1700, max) {
+    left: 0rem;
+    top: 90px;
+    width: 100%;
+  }
+}
+
+.form-boat-title {
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: center;
+    color: rgba(19, 81, 142, 1);
+    display: flex;
+    flex-direction: column;
+    span {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 36px;
+      text-align: center;
+    }
+  }
+}
+
+.register-boat-services {
+  display: flex;
+  padding: 3rem;
+  @include mq(1700, max) {
+    width: 89%;
+  }
+  &-right {
+    width: 415px;
+    height: 703px;
+    padding: 17px 20px 30px 20px;
+    border-radius: 10px;
+    opacity: 0.9;
+    background-color: white;
+    padding: 29px 29px;
+    width: 331px;
+    margin-right: 30px;
+  }
+}
+
+.form-boat-step-container-register {
+  margin-top: 20px;
+  width: 1275px;
+  height: 740px;
+  border-radius: 10px;
+  opacity: 0;
+  background-color: white !important;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 66px 231px 400px;
+}
+
+.form-boat-step-container-register-buttons {
+  transform: translate(400px, -20px);
+
+  @include mq(1700, max) {
+    transform: translate(300px, -200px);
+  }
+  @include mq(1531, max) {
+    transform: translate(290px, -240px);
+  }
+  @include mq(1280, max) {
+    transform: translate(200px, -240px);
+  }
+  @include mq(2000, max) {
+    transform: translate(150px, -240px);
+  }
+  .MuiButton-label {
+    justify-content: center;
+  }
+}
+
+.MuiStepLabel-label.MuiStepLabel-completed {
+  color: #57a6bd !important;
+}
+
+.MuiStepLabel-label.MuiStepLabel-active {
+  color: #57a6bd !important;
+
+  padding: 6px 14px 6px 22px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  background-color: white;
+  box-shadow: 0px 0px 6px 0px #cce7f8;
+}
+
+.makeStyles-stepperRoot-4 {
+  @include mq(1700, max) {
+    width: 114%;
+  }
+}
+.organization-stepper {
+  width: 1369px;
+  padding: 0px 44px 0px;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 190px;
+  z-index: 5855556555454;
+  position: relative;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 35px 31px 35px 31px;
+  border-radius: 20px;
+  background: #ffffff;
+  margin-top: 2rem;
+}
+/* styles.css */
+.MuiStepLabel-root.Mui-active {
+  background-color: white;
+}

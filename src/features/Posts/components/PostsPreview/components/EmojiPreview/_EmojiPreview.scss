@@ -1,0 +1,64 @@
+@import '@assets/styles/abstracts';
+.emoji-preview-container {
+  @include flexbox(row, center, center);
+  width: 100%;
+  height: 60px;
+  background-color: #ecf0f3;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  .emoji-preview {
+    cursor: pointer;
+    @include flexbox(row, center, center);
+    gap: 5px;
+    .emoji-icon {
+      border: 1px solid hsl(235.84deg 86.32% 77.06%);
+      border-radius: 25px;
+      height: 36px;
+      padding: 0px 10px;
+      @include flexbox(row, center, center);
+      gap: 10px;
+      min-width: 50px;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      span svg {
+        font-size: 25px;
+      }
+      .react-number {
+        font-size: 16px;
+        font-weight: 500;
+        color: hsl(238.16deg 38.89% 50.59%);
+      }
+      span {
+        font-size: 17px;
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+.reacted-people-list {
+  max-height: 250px;
+  overflow-y: scroll;
+  @include flexbox(column, start, start);
+  gap: 5px;
+  .reacted-list-item {
+    .reacted-item-id {
+      span {
+        padding: 0px 5px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgb(37, 38, 70);
+      }
+    }
+    .reacted-item-date {
+      span {
+        font-weight: 500;
+        color: rgb(175, 158, 158);
+      }
+    }
+  }
+}

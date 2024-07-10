@@ -1,0 +1,26 @@
+@import '@assets/styles/abstracts';
+.checkbox-question-type {
+  gap: 5px;
+  @include flexbox(row, center, center);
+  .editing {
+    border: 1px solid rgba(65, 65, 174, 0.516);
+    background-color: rgba(53, 161, 207, 0.237);
+    border-radius: 5px;
+    padding: 5px;
+  }
+  .controls-checkbox-option-btns-container {
+    @include flexbox(row, center, center);
+    gap: 5px;
+    .remove-checkebox-option-button {
+      svg {
+        color: rgba(255, 0, 0, 0.645);
+      }
+    }
+    .checkebox-option-button {
+      background-color: #fff;
+      svg {
+        font-size: 17px;
+      }
+    }
+  }
+}

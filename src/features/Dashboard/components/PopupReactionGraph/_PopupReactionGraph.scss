@@ -1,0 +1,15 @@
+@import '@assets/styles/abstracts';
+.popup-reaction-graph-container {
+  @include flexbox(column, flex-start, flex-start);
+  gap: 22px;
+  border-radius: 20px;
+  background: #fff;
+  width: 100%;
+  padding: 25px 35px;
+  .popup-reaction-graph-title {
+    width: 100%;
+    color: #363853;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,80 @@
+export const popupStat = [
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '50',
+    comment: '75',
+    rate: '25%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '30',
+    comment: '45',
+    rate: '60%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '70',
+    comment: '90',
+    rate: '34%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '20',
+    comment: '35',
+    rate: '57%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '40',
+    comment: '60',
+    rate: '99%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '80',
+    comment: '110',
+    rate: '20%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '60',
+    comment: '80',
+    rate: '70%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '90',
+    comment: '120',
+    rate: '55%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '25',
+    comment: '40',
+    rate: '88%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '25',
+    comment: '40',
+    rate: '62%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '25',
+    comment: '40',
+    rate: '72%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '25',
+    comment: '40',
+    rate: '11%',
+  },
+  {
+    title: 'Lorem Ipsum is simply',
+    reaction: '90',
+    comment: '120',
+    rate: '55%',
+  },
+]

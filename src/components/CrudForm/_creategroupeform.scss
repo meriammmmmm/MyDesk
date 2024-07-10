@@ -1,0 +1,39 @@
+.css-1hi37tf-JoyCheckbox-checkbox {
+  display: none !important
+  ;
+}
+.actions-create-groupe {
+  margin-top: 3rem;
+  height: 404.11px;
+  padding: 19px 15px 19px 15px;
+  gap: 18px;
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+  .actions-headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f2fafe;
+    padding: 9px 10px 9px 10px;
+    border-radius: 8px;
+    p {
+      font-family: Inter;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 20px;
+      text-align: left;
+      color: #344054;
+    }
+  }
+  .MuiListItem-root {
+    width: 14% !important;
+    margin-top: 0rem !important;
+    flex-direction: row-reverse;
+  }
+}
+.css-1ryxlbi-JoyCheckbox-root .Mui-checked::before {
+  display: none;
+}
+.css-n82b39-JoyCheckbox-checkbox {
+  display: none !important;
+}

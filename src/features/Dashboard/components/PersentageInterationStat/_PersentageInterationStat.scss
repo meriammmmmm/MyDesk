@@ -1,0 +1,32 @@
+@import '@assets/styles/abstracts';
+.percentage-interation-stat-container {
+  @include flexbox(column, flex-start, flex-start);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0px 4px 16px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 25px 35px;
+  .percentage-interaction-title {
+    @include flexbox(row, center, center);
+    gap: 10px;
+    .interaction-icon {
+      display: flex;
+      width: 38px;
+      height: 38px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background: #50ccc5;
+      svg {
+        font-size: 22px;
+        color: #fff;
+      }
+    }
+    p {
+      color: #363853;
+      font-size: 16px;
+    }
+  }
+}

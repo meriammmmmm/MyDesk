@@ -1,0 +1,58 @@
+export const takiFilters = [
+  {
+    filterType: 'select',
+    filterLabel: 'Division',
+    property: 'division',
+    endPoint: 'https://api.takiacademy.me/api/admin/divisions',
+    search: 'division.id',
+    pathToName: 'payload',
+  },
+  {
+    filterType: 'select',
+    filterLabel: 'User group',
+    property: 'group',
+    endPoint: 'https://api.takiacademy.me/api/admin/groups',
+    search: 'affiliations.group.id',
+    pathToName: 'payload',
+  },
+  // {
+  //   filterType: 'select',
+  //   filterLabel: 'User Levels',
+  //   endPoint: 'https://api.takiacademy.me/api/admin/student-levels',
+  //   search: 'affiliations.group.id',
+  //   pathToName: 'payload',
+  // },
+  {
+    filterType: 'select',
+    filterLabel: 'User Subjects',
+    property: 'subjects',
+    endPoint: 'https://api.takiacademy.me/api/admin/subjects',
+    search: 'affiliations.group.id',
+    pathToName: 'payload',
+  },
+  // {
+  //   filterType: 'select',
+  //   filterLabel: 'User Levels',
+  //   endPoint:'https://api.takiacademy.me/api/admin/student-levels',
+  //   search: 'student-levels.id',
+  //   pathToName: 'payload',
+  // },
+  {
+    filterType: 'select',
+    filterLabel: 'State',
+    property: 'state',
+    endPoint: 'https://api.takiacademy.me/api/admin/1/states',
+    search: 'state.id',
+    pathToName: 'payload',
+  },
+  {
+    filterType: 'boolean',
+    filterLabel: 'Users Without Offers',
+    search: 'noAffiliation:1',
+  },
+  {
+    filterType: 'boolean',
+    filterLabel: 'Users With Levels',
+    search: 'studentLevelUser:1',
+  },
+]

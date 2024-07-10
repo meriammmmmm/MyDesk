@@ -1,0 +1,18 @@
+@import '@assets/styles/abstracts';
+.editor-options-navigation-container {
+  @include flexbox(column, stretch, stretch);
+  gap: 10px;
+}
+.overlay-edit-option {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 908;
+}
+
+.edit-option-container {
+  @include flexbox(column, stretch, stretch);
+  gap: 3px;
+}

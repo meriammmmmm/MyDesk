@@ -1,0 +1,26 @@
+@import '@assets/styles/abstracts';
+.rules-title-container {
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 25px;
+  @include flexbox(row, space-between, center);
+  .rules-title-description {
+    @include flexbox(row, start, center);
+    gap: 15px;
+    span {
+      text-transform: capitalize;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+  .rules-title-navigation {
+    @include flexbox(row, start, center);
+    gap: 7px;
+    p {
+      text-transform: capitalize;
+      color: #bdbebe;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+}

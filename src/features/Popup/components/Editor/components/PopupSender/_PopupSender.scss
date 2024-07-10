@@ -1,0 +1,43 @@
+.popup-sender-container {
+  display: flex;
+  display: none;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 25px 5px;
+  .popup-sender-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #222;
+    span {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  .popup-sender-details {
+    display: flex;
+    flex-direction: column;
+    .popup-sender-name-details {
+      font-size: 14px;
+      opacity: 0.8;
+      span {
+        color: rgb(141, 136, 136);
+      }
+    }
+    span {
+      margin-top: -3px;
+      color: rgb(141, 136, 136);
+    }
+  }
+}
+.popup-title-editor {
+  word-break: break-word;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(9 11 23 / 83%);
+}

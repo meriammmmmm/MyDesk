@@ -1,0 +1,45 @@
+.upload-section {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.upload-container {
+  width: 88%;
+  height: 74px;
+  padding: 16px 24px 16px 24px;
+  gap: 4px;
+  border-radius: 12px;
+  border: 1px;
+  opacity: 0px;
+  border: 1px dashed #21afda;
+  background: #e5f4fd;
+  .uploader-button {
+    display: flex;
+    justify-content: space-around;
+    gap: 0rem;
+    .uploder-instruction {
+      p {
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: center;
+        span {
+          font-weight: 600;
+          line-height: 20px;
+          text-align: left;
+        }
+      }
+      .uploder-types {
+        font-size: 12px !important;
+      }
+    }
+  }
+}
+.blob-container {
+  img {
+    width: 3rem;
+  }
+}

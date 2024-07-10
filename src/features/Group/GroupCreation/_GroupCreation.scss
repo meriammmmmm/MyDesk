@@ -1,0 +1,11 @@
+@forward './../components/GroupCreateionHeader/GroupCreationHeader';
+@forward './../components/GroupTable/GroupTable';
+@forward './../components/SelectedItems/SelectedItems';
+@import '@assets/styles/abstracts';
+
+.group-creation-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

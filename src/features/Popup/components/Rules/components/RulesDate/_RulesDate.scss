@@ -1,0 +1,63 @@
+@import '@assets/styles/abstracts';
+.rules-date-container {
+  @include flexbox(column, flex-start, flex-start);
+  gap: 20px;
+  width: 100%;
+  border-radius: 15px;
+  padding: 10px 20px 25px 20px;
+  background: #f7f5ff;
+  .rules-start-date {
+    width: 100%;
+    @include flexbox(column, flex-start, flex-start);
+    gap: 18px;
+    .rules-start-date-label {
+      width: 100%;
+      @include flexbox(row, space-between, center);
+      .rules-start-date-label-left-part {
+        @include flexbox(row, start, center);
+        gap: 12px;
+        p {
+          color: #459976;
+          font-size: 13px;
+          font-weight: 400;
+        }
+        svg {
+          color: #459976;
+          font-size: 16px;
+        }
+      }
+      .remove-rules-date-btn {
+        @include flexbox(row, center, center);
+        background-color: #fd9d9d;
+        color: #fff;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .rules-end-date {
+    width: 100%;
+    @include flexbox(column, flex-start, flex-start);
+    gap: 18px;
+    .rules-end-date-label {
+      width: 100%;
+      @include flexbox(row, start, center);
+      gap: 12px;
+      p {
+        color: #c36868;
+        font-size: 13px;
+        font-weight: 400;
+      }
+      svg {
+        color: #c36868;
+        font-size: 16px;
+      }
+    }
+  }
+}
+.ant-picker {
+  width: 100% !important;
+  border-radius: 15px !important;
+  border: 1px solid #605dce !important;
+}

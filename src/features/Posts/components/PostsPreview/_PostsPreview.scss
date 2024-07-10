@@ -1,0 +1,103 @@
+@import '@assets/styles/abstracts';
+.post-preview-container {
+  @include flexbox(column, flex-start, flex-start);
+  gap: 30px;
+  .popup-preview-stat {
+    @include flexbox(row, flex-start, flex-start);
+    gap: 31px;
+    width: 100%;
+    height: 100%;
+    .previewed-popup-title {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      word-break: break-word;
+      justify-content: center;
+      min-height: 40px;
+      font-size: 18px;
+      padding: 14px 20px;
+    }
+    .swiper-container {
+      position: relative;
+      max-height: 500px;
+      overflow-y: auto;
+      word-wrap: break-word;
+      overflow-x: hidden;
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+    .swiper-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      transition-property: transform;
+      transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+      box-sizing: content-box;
+    }
+    .swiper-slide {
+      box-sizing: border-box;
+      padding: 0 40px 20px;
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition-property: transform;
+      display: block;
+    }
+  }
+}
+
+.taki-popups-prev-btn {
+  transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  font-size: 29px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 31px;
+  width: 31px;
+  z-index: 55;
+  cursor: pointer;
+  border: none;
+}
+.taki-popups-next-btn {
+  transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  font-size: 29px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 31px;
+  width: 31px;
+  z-index: 55;
+  cursor: pointer;
+  border: none;
+}
+.points-swiper-navigation {
+  @include flexbox(row, flex-start, flex-start);
+  gap: 8px;
+  position: absolute;
+  bottom: 0%;
+  right: 48%;
+  z-index: 55;
+  .swiper-navigation-point {
+    cursor: pointer;
+    border: 1px solid #331;
+    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+  }
+  .active-navigation-point {
+    background: rgba(137, 131, 131, 0.685);
+  }
+}

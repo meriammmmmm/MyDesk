@@ -1,0 +1,18 @@
+@import '@assets/styles/abstracts';
+
+.action-popup {
+  @include flexbox(row, start, start);
+  gap: 5px;
+  .action-popup-button {
+    border: none;
+    border: none;
+    svg {
+      color: #506bcc;
+      font-size: 21px;
+    }
+  }
+}
+.dots-icon {
+  font-size: 24px;
+  color: #506bcc;
+}

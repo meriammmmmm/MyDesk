@@ -1,0 +1,42 @@
+@import '@assets/styles/abstracts';
+
+.action-popup {
+  @include flexbox(row, start, start);
+  gap: 5px;
+  .action-popup-button {
+    border: none;
+    border: none;
+    svg {
+      color: #506bcc;
+      font-size: 21px;
+    }
+  }
+}
+.dots-icon {
+  font-size: 24px;
+  color: #506bcc;
+}
+.drawer-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.crud-form-popup {
+  padding: 16px;
+}
+:where(.css-dev-only-do-not-override-k7429z).ant-drawer .ant-drawer-header {
+  display: none;
+}

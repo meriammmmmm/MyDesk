@@ -1,0 +1,28 @@
+@import '@assets/styles/abstracts';
+
+.width-comp-container {
+  width: 100%;
+  @include flexbox(row, start, center);
+  .width-comp-label {
+    min-width: 120px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .width-buttons {
+    @include flexbox(row, center, center);
+    gap: 40px;
+    div {
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .active {
+      @include flexbox(row, center, center);
+      padding: 12px 3px;
+      width: fit-content;
+      height: 25px;
+      color: #fff;
+      background-color: #2e4dba;
+      border-radius: 4px;
+    }
+  }
+}

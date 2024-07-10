@@ -1,0 +1,45 @@
+@import '@assets/styles/abstracts';
+
+.script-container {
+  @include flexbox(column, space-between, start);
+  width: 100%;
+  .sitting-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .script-container-title {
+    h1 {
+      color: #777998;
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 11px;
+      @media screen and (max-width: 600px) {
+        font-size: 20px;
+      }
+    }
+  }
+  .submit-sittting-btn {
+    height: 44px;
+    width: 100%;
+    color: #fff;
+    border-radius: 10px;
+    background: #506bcc;
+    font-size: 16px;
+    font-weight: 600;
+    align-self: flex-end;
+    margin-bottom: 1rem;
+  }
+  .script-aria {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .copy-script-icon {
+    color: #506bcc;
+    cursor: pointer;
+    font-size: 22px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+}

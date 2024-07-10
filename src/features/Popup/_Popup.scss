@@ -1,0 +1,44 @@
+@import '@assets/styles/abstracts';
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    box-shadow: 0px 4px 16px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 15px 25px;
+    .popup-content-toggled {
+      @include flexbox(row, space-between, center);
+      cursor: pointer;
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        .popup-content-toggled-title {
+          font-family: Inter;
+          font-size: 22px;
+          font-weight: 400;
+        }
+        svg {
+          font-size: 20px;
+        }
+      }
+      .arrow-down-toggle {
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+    .popup-content-editor-setting {
+      display: flex;
+      align-items: flex-start;
+      @media screen and (max-width: 1380px) {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      gap: 50px;
+    }
+  }
+}

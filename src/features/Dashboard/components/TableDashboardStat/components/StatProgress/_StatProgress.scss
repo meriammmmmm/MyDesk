@@ -1,0 +1,29 @@
+.table-stat-procress {
+  width: 64px;
+  .progress2 {
+    border-radius: 20px;
+    background: #f3f3fb;
+  }
+
+  .progress-bar2 {
+    height: 7px;
+    border-radius: 30px;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+  }
+
+  .progress-moved .progress-bar2 {
+    background-color: #605dce;
+    animation: progressAnimation 1s;
+  }
+
+  @keyframes progressAnimation {
+    0% {
+      width: 5%;
+      background-color: #605dce;
+    }
+    100% {
+      background-color: #605dce;
+    }
+  }
+}

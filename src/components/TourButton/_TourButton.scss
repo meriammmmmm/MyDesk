@@ -1,0 +1,23 @@
+@import '@assets/styles/abstracts';
+.tour-button {
+  @include flexbox(row, center, center);
+  position: absolute;
+  bottom: 38px;
+  right: 45px;
+  padding: 11px 11px;
+  z-index: 9;
+  background-color: #4f68c7;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 22px;
+  transition: background-color 0.3s ease;
+  svg {
+    font-size: 25px;
+  }
+  &:hover {
+    background-color: #4f67c7b4;
+  }
+}

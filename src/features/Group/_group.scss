@@ -1,0 +1,10 @@
+@forward './GroupCreation/GroupCreation';
+@import '@assets/styles/abstracts';
+.group-container {
+  @include flexbox(column, space-between, stretch);
+  height: 100%;
+  .group-table-and-controls {
+    @include flexbox(column, space-between, stretch);
+    gap: 30px;
+  }
+}

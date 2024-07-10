@@ -1,0 +1,31 @@
+.rules-checkbox-container {
+  width: 100%;
+  border-radius: 15px;
+  padding: 20px 10px 35px 22px;
+  background: #f7f5ffb0;
+  margin-bottom: 14px;
+
+  .rules-checkbox-label {
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 25px;
+  }
+  .rules-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 33px 10px;
+    .rules-checkbox-item {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}
+.ant-checkbox-inner {
+  height: 23px !important;
+  width: 23px !important;
+
+  border-color: #4096ff !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #4096ff !important;
+}

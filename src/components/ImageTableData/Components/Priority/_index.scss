@@ -1,0 +1,19 @@
+.row-priority {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+  &.normal {
+    border: 0.5px solid #50ccc5;
+    background: rgba(80, 204, 197, 0.35);
+  }
+  &.important {
+    border: 0.5px solid #ffc200;
+    background: #fff4d2;
+  }
+  &.urgent {
+    border: 0.5px solid #ff5734;
+    background: #ffe5e5;
+  }
+}

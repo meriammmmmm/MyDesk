@@ -1,0 +1,92 @@
+.editor-container {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  .editor-blocks-background-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background: #09143db8;
+    padding: 52.83px;
+    min-height: 395px;
+    border-radius: 0px 0px 10px 10px;
+
+    .number-swipe-popups {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      overflow: auto;
+      margin-bottom: 10px;
+      align-items: center;
+      .swipe-popups,
+      .swipe-popups-add-page,
+      .swipe-popups-delete-page {
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        background: #e7ecff;
+        border: 1px solid #506bcc;
+        border-radius: 3.421px;
+        height: 32px;
+        width: 26px;
+        box-shadow: 0px 3.421px 8.211px 0px rgba(115, 137, 214, 0.37);
+
+        &.active-page {
+          background: rgba(80, 107, 204, 0.8);
+          color: white;
+        }
+      }
+      .swipe-popups-add-page,
+      .swipe-popups-delete-page {
+        font-size: 14px;
+        border-radius: 3.421px;
+        border: 0.684px solid var(--Blue-dark, #506bcc);
+        background: #ccd7ff;
+
+        box-shadow: 0px 3.421px 8.211px 0px rgba(115, 137, 214, 0.37);
+      }
+      .swipe-popups-add-page:hover {
+        background: rgba(102, 129, 227, 0.8);
+        color: white;
+      }
+      .swipe-popups-delete-page:hover {
+        background: rgb(221, 51, 51);
+        color: white;
+      }
+      .ligne {
+        width: 3px;
+        height: 28px;
+        background: white;
+        border-radius: 8px;
+      }
+    }
+    .editor-blocks {
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: fit-content;
+      max-width: 500px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 16px 23px -3px rgba(0, 0, 0, 0.25);
+      font-size: 13px;
+      line-height: 1.5;
+      .editor-blocks-field {
+        padding: 0px 40px;
+      }
+      .last-editor-block-item {
+        height: 20px;
+      }
+    }
+  }
+}

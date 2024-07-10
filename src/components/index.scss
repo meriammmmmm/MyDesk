@@ -1,0 +1,46 @@
+@forward './Sidebar/Sidebar';
+@forward './Navbar/Navbar';
+@forward './DropDown/DropDown';
+@forward './CretePopUp/createpopup';
+@forward './UploadImage/uploadimage';
+@forward './CrudForm/createform';
+@forward './CrudForm/creategroupeform';
+
+@forward './EditInputField/editinputfield';
+
+@forward './SidebarItems/SidebarItems';
+@forward './ThemeButton/ThemeButton';
+@forward './Button/Button';
+@forward './InputField/inputfield';
+@forward './AuthNavigation/AuthNavigation';
+@forward './TableData/tabledata';
+@forward './CrudForm/crudform';
+@forward './Overlay/overlay';
+@forward './SelectComp/selectcomp';
+@use './Input/Input';
+@use './LoginInput/_logininput';
+
+@forward './ListInfo/listInfo';
+@forward './SelectTags';
+// @forward './Table/Table';
+@forward './UserImg/userimg';
+@forward './RolesComp/RolesComp';
+@forward './ActionControl/ActionControl';
+@forward './FormatTime/FormatTime';
+@forward './Drawer/Drawer.scss';
+@forward './Pagination/Pagination';
+@forward './UploadButton/UploadButton';
+@forward './TourButton/TourButton';
+@forward './Pagination/components/GoTo/GoTo';
+@forward './LazyLoad/LazyLoad';
+@forward './AsyncSelect/AsyncSelect';
+@forward './UploadIcon/uploadIcon';
+@forward './MultipleRemoveCom/MultipleRemoveCom';
+@forward './Filter/Filter';
+@forward './AntdSpin/AntdSpin';
+@forward './Range/Range';
+@forward './ToggleColumn/ToggleColumn';
+@forward './AudienceTable/AudienceTable';
+@forward './CSVFile';
+
+@forward './Stepper/Stepper';

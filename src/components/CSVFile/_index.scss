@@ -1,0 +1,48 @@
+.csv-export {
+  display: flex;
+  gap: 10px;
+  max-width: 338px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e4e4e4;
+  background: #fff;
+  margin-left: auto;
+  @media screen and (max-width: 1250px) {
+    margin: auto;
+  }
+  @media screen and (max-width: 400px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ant-select-selector {
+    height: 45px !important;
+    padding: 0 16px !important;
+    text-transform: capitalize;
+  }
+  .ant-select-arrow {
+    color: #000;
+  }
+  .btn-csv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #506bcc;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background: #4056a1;
+    }
+    color: #fff;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.ant-select-item {
+  text-transform: capitalize;
+}

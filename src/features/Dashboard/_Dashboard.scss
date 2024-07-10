@@ -1,0 +1,221 @@
+/* src/App.css */
+.tool-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 16px;
+  padding: 89px;
+}
+
+.tool {
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tool img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  height: 3.5rem;
+}
+
+.tool h3 {
+  margin: 12px 0 0;
+}
+
+.modal {
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(102, 112, 133, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 3rem;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 744.37px;
+  text-align: center;
+  border-radius: 8px;
+  .model-content-header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e4e7ec;
+    h2 {
+      font-family: Inter;
+      font-size: 18.93px;
+      font-weight: 600;
+      line-height: 29.44px;
+      text-align: left;
+    }
+    p {
+      font-family: Inter;
+      font-size: 14.72px;
+      font-weight: 400;
+      line-height: 21.03px;
+      text-align: left;
+    }
+  }
+  .configuration-cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .configuration-cards-container {
+      .configuration-image {
+        margin-bottom: 1rem;
+      }
+      width: 195px;
+      padding: 12.62px 14.72px 12.62px 14.72px;
+      gap: 0px;
+      border-radius: 12.62px;
+      border: 1.05px 0px 0px 0px;
+      opacity: 0px;
+      border: 1.05px solid #e4e7ec;
+      height: 260.78px;
+    }
+    .configuration-cards-details {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      .configuration-details {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+    }
+  }
+  .configuration-number,
+  .personal-configuartion {
+    padding: 6.21px;
+
+    border-radius: 4.97px;
+    border: 0.62px solid #0188f7;
+    background: white;
+  }
+}
+.personal-configuartion {
+  border: 0.62px solid #e4e7ec !important;
+  height: 2rem;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.personalise {
+  display: flex;
+  align-items: center;
+  p {
+    font-size: 14.72px;
+    font-weight: 500;
+    line-height: 21.03px;
+    text-align: left;
+    color: #8a8a8a;
+  }
+  .line {
+    flex: 1;
+    border: 1.12px solid #e4e7ec;
+    margin: 0 10px;
+  }
+}
+.personal-slider-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .personal-slider {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    .title {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
+
+.configuration-cards-container.selected {
+  background-color: #e7f5ff;
+  box-shadow: 0px 0px 6.31px 0px #cce7f8;
+  border: 1px solid #0188f7 !important;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.disabled .configuration-cards-details {
+  pointer-events: none;
+}
+.tab-switcher-dashboard {
+  display: flex;
+  /* margin-bottom: 20px; */
+  background: #e5f4fd;
+  width: 870px;
+  padding: 7px 16px 8px 16px;
+  border-radius: 8px;
+}
+.switcher-container-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28rem !important;
+  margin: 20px;
+}
+.congfiguration-title {
+  font-family: Inter;
+  font-size: 11.57px;
+  font-weight: 400;
+  line-height: 21.03px;
+  text-align: left;
+  width: 150%;
+}
+.css-ltlhnc-MuiSlider-root.Mui-disabled {
+  color: #bdbdbd !important;
+  height: 5.7px !important;
+}
+.css-ltlhnc-MuiSlider-root {
+  color: #33a5f1 !important;
+  height: 5.7px !important;
+}
+.css-cp2j25-MuiSlider-thumb.Mui-disabled {
+  background: white !important;
+  border: 1px solid #9c9c9c !important;
+}
+.css-cp2j25-MuiSlider-thumb::before {
+  background: #9c9c9c;
+  width: 53% !important;
+  height: 45% !important;
+}
+.css-cp2j25-MuiSlider-thumb {
+  background: #33a5f1 !important;
+  border: 1px solid #9c9c9c !important;
+}
+.css-cp2j25-MuiSlider-thumb::before {
+  width: 53% !important;
+  height: 45% !important;
+}

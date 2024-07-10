@@ -1,0 +1,38 @@
+.switcher-container {
+  margin: 20px;
+}
+
+.tab-switcher {
+  display: flex;
+  margin-bottom: 20px;
+  background: #e5f4fd;
+  width: 192px;
+  padding: 7px 16px 8px 16px;
+  border-radius: 8px;
+}
+
+.switcher-button {
+  padding: 10px 20px;
+  background: #e5f4fd;
+  cursor: pointer;
+  border-radius: 8px;
+
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.switcher-button:hover {
+  background: #e5f4fd;
+}
+
+.switcher-button.active {
+  background: #ffffff;
+  color: #177c9a;
+  border-color: #ffffff;
+  border-radius: 8px;
+}
+
+.switcher-button:focus {
+  outline: none;
+}

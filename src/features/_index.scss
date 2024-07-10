@@ -1,0 +1,15 @@
+// src/features/_index.scss
+@forward './NotFound/NotFound';
+@forward './Login/Login';
+@forward './Register/Register';
+@forward './Dashboard/Dashboard';
+@forward './Admin' as admin-*; // Alias Admin mixins
+@use './Settings/settings';
+@forward './Popup';
+@forward './Posts/Posts' as posts-*; // Alias Posts mixins
+@forward './Profile/profile';
+@forward './ForgetPassword';
+@forward './ClientFilter/ClientFilter';
+@forward './Group/group';
+@forward './Reports';
+@forward './Profile/components/PasswordUpdate/passowrdupdate';

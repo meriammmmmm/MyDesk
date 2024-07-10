@@ -1,0 +1,25 @@
+@forward './components/ClientFilterItem/ClientFilterItem';
+@import '@assets/styles/abstracts';
+.client-filter-container {
+  max-width: 100%;
+  margin: 0 auto;
+  @media screen and (max-width: 950px) {
+    max-width: 100%;
+  }
+  .client-filer-header {
+    .client-filter-header-btns {
+      @include flexbox(row, center, center);
+      gap: 10px;
+    }
+    p {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    margin-bottom: 30px;
+    @include flexbox(row, space-between, center);
+  }
+  .client-filter-blocks {
+    @include flexbox(column, start, start);
+    gap: 20px;
+  }
+}

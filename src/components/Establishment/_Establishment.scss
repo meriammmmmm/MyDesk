@@ -1,0 +1,82 @@
+.Establishment-Section{
+    margin-top: 2rem;
+    width: 1275px;
+    height: 833px;
+    border-radius: 10px;
+    opacity: 0px;
+    background-color: white !important;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 231px;
+    padding-top: 82px;
+    @include mq(1700, max) {
+        width: 114%;
+        padding: 9rem;
+      }
+    &-online-title{
+        font-size: 2.4rem;
+        font-weight: 400;
+        line-height: 3.6rem;
+        text-align: center;
+        color: rgba(19, 81, 142, 1);
+        margin-bottom: 2rem;
+        
+            }
+    &-title{
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 3.6rem;
+        text-align: center;
+        color: rgba(19, 81, 142, 1);
+        
+            }
+    &-upload , &-date{
+        display: flex;
+      
+height: 55.275px;
+padding: 11.055px 11.055px 11.055px 13.266px;
+align-items: center;
+gap: 19.899px;
+border-radius: 10px;
+border: 1.106px solid rgb(161, 199, 236);
+background: var(--colors-charcoal-50, #fff);
+box-shadow: 0px 2px 4px 0px rgba(33, 37, 232, 0.04);
+justify-content: space-between;
+margin-top: 2rem;
+.upload-button{
+    background: rgba(31, 186, 255, 1);
+width: 11rem;
+    padding: 0px 18px 0px 18px;
+    gap: 30px;
+    border-radius: 26px ;
+    opacity: 0px;
+font-size: 1.5rem;
+font-weight: 400;
+line-height: 1.7rem;
+color: white;
+
+    
+}
+    }
+}
+#dropdown-date{
+    display: flex;
+    gap: 1rem;
+}
+#dropdown-year{
+    border-bottom: 1px solid rgba(161, 199, 236, 1);
+    select{
+        border: none;
+    }
+}
+#dropdown-month{
+    border-bottom: 1px solid rgba(161, 199, 236, 1);
+    select{
+        border: none;
+    }
+}#dropdown-day{
+    border-bottom: 1px solid rgba(161, 199, 236, 1);
+    select{
+        border: none;
+    }
+}

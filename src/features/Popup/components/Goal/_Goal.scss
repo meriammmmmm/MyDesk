@@ -1,0 +1,58 @@
+.goal-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px;
+
+  height: fit-content;
+  box-shadow: 0px 4px 16px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  background: #fff;
+  .goal-content {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    .goal-input {
+      height: 37px;
+      font-size: 16px;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 18px;
+      width: 141px;
+      height: 37px;
+      border-radius: 5px;
+      border: 1px solid var(--Blue-dark, #506bcc);
+      background: #ccd7ff;
+      box-shadow: 0px 5px 12px 0px rgba(115, 137, 214, 0.37);
+      color: #1f347d;
+      font-size: 16px;
+    }
+  }
+  .goal-toggled-container {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      .goal-toggled-title {
+        font-family: Inter;
+        font-size: 22px;
+        font-weight: 400;
+      }
+      svg {
+        font-size: 20px;
+      }
+    }
+    .arrow-down-toggle {
+      font-size: 30px;
+      cursor: pointer;
+    }
+  }
+}

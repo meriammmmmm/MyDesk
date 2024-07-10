@@ -1,0 +1,11 @@
+@import '@assets/styles/abstracts';
+
+.picker-color-container {
+  width: 100%;
+  @include flexbox(row, start center);
+  .picker-color-label {
+    min-width: 120px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
