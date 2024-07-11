@@ -28,12 +28,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   return (
     <div className="main-layout">
-      {/* <div
-        className={`main-layout-sidebar ${showSidebar ? 'main-layout-toggle-mobile-sidebar' : ''}`}
-      >
-        <Sidebar collapseSidebar={collapseSidebar} />
-      </div> */}
-
       {showSidebar ? <span className="main-layout-shadow"></span> : null}
 
       <div className={`main-layout-content ${showSidebar ? 'main-layout-disable-events' : ''}`}>

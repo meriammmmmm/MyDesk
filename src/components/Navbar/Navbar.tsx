@@ -46,10 +46,8 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await dispatch(logout())
-      // Optionally, redirect or perform additional actions after logout
     } catch (error: any) {
       console.error('Logout failed:', error.message)
-      // Handle error if needed
     }
   }
 
@@ -74,9 +72,6 @@ const Navbar = () => {
     const minutes = Math.floor((diff / 1000 / 60) % 60)
     const hours = Math.floor(diff / 1000 / 60 / 60)
 
-    // Display 'N/A' for the first image
-
-    // Display seconds and adjust format after 60 seconds
     if (hours > 0) {
       return `${hours}h ${minutes}m`
     } else if (minutes > 0) {
@@ -111,7 +106,6 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        {/* <img src={menuIcon} alt="menu" className="navbar-left-menu-icon" /> */}
         <img src={logo} className="navbar-left-logo" alt="logo" />
         <div className="navbar-left-home">
           <img src={home} alt="home" className="navbar-left-home-image" />
@@ -135,16 +129,17 @@ const Navbar = () => {
                 <SwiperSlide key={index}>
                   <div className="item-image">
                     <img src={item.image} alt={item.title} className="item-image" />
-                  </div>
-                  <div className="item-informatin">
-                    <h2 className="item-title">{item.name}</h2>
-                    <div className="item-timer">
-                      <img src={timer} alt="" className="timer" />
-                      <p className="item-date">
-                        {calculateElapsedTime(index, item.startTime)}
-                      </p>{' '}
+                    <div className="item-informatin">
+                      <h2 className="item-title">{item.name}</h2>
+                      <div className="item-timer">
+                        <img src={timer} alt="" className="timer" />
+                        <p className="item-date">
+                          {calculateElapsedTime(index, item.startTime)}
+                        </p>{' '}
+                      </div>
                     </div>
                   </div>
+
                   <img
                     style={{ width: '24px' }}
                     src={turn}

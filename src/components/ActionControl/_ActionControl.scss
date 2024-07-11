@@ -6,8 +6,9 @@
   .action-popup-button {
     border: none;
     border: none;
+    padding: 0;
     svg {
-      color: #506bcc;
+      color: black;
       font-size: 21px;
     }
   }
@@ -39,4 +40,17 @@
 }
 :where(.css-dev-only-do-not-override-k7429z).ant-drawer .ant-drawer-header {
   display: none;
+}
+div:where(.swal2-container).swal2-backdrop-show,
+div:where(.swal2-container).swal2-noanimation {
+  background-color: rgba(102, 112, 133, 0.8) !important;
+}
+div:where(.swal2-container) .swal2-html-container {
+  display: block;
+  font-family: Inter;
+  font-size: 14px !important;
+  font-weight: 400 !important; /* line-height: 8px; */ /* text-align: center; */ /* width: 283px; */ /* height: 30px; */
+  gap: 0px !important;
+  opacity: 0px !important;
+  color: rgba(71, 84, 103, 1) !important;
 }

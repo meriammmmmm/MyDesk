@@ -85,7 +85,6 @@ const CreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
   return (
     <div>
       <Upload onDrop={handleImageUpload} maxFiles={1} />
-
       <div className="create-container">
         <InputField
           field={{
@@ -150,40 +149,28 @@ const CreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         value={formData.iimageGroupe}
         setValue={(value: any) => handleFormChange({ ...formData, iimageGroupe: value })}
       />
-
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}>
           <Switch {...label} checked={formData.status} onChange={handleSwitchChange} />
-          <p className="statusFormat">{formData.status ? 'Active' : 'Inactive'}</p>{' '}
+          <p className="statusFormat">{formData.status ? 'Active' : 'Offline'}</p>{' '}
         </div>
         <p className="user-acount-status"> User Account Status</p>{' '}
       </div>
-
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-        <Button type="submit" className="submit-button-form" size="xl" onClick={handleSubmit}>
-          Submit
-        </Button>
         <Button
           type="button"
-          className="cancel-button-form"
           onClick={() => {
             onClosePopup()
-            setFormData({
-              name: '',
-              email: '',
-              fullname: '',
-              password: '',
-              userGroupe: [],
-              iimageGroupe: [],
-              image: null,
-              status: true,
-            })
           }}
           size="xl"
+          className="cancel-button-form"
         >
           Cancel
         </Button>
-      </div>
+        <Button className="submit-button-form" type="submit" size="xl" onClick={handleSubmit}>
+          Confirm
+        </Button>
+      </div>{' '}
     </div>
   )
 }

@@ -68,7 +68,7 @@ const ListInfo = ({ setToggleColumn, title, itemsNumber, isUserListInfo }: ListI
             />
           </div>
           <Button className={`admin-user-creation-btn`} onClick={() => handleAdd()}>
-            {width < 600 ? '+' : isUserListInfo ? 'Create User' : 'Create Role'}
+            {width < 600 ? '+' : isUserListInfo ? '+Add User' : 'Create Role'}
           </Button>
         </div>
       </div>

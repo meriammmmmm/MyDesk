@@ -39,7 +39,7 @@
       font-weight: 400;
       line-height: 18px;
       text-align: left;
-      color: #344054;
+      color: rgba(2, 106, 162, 1);
     }
   }
   .admin-user-creation {
@@ -54,6 +54,7 @@
     border-radius: 10px;
     height: 62px;
     padding: 0px 10px 0px 0px;
+    gap: 1rem;
     @include flexbox(row, space-between, center);
 
     .input-container {
@@ -98,7 +99,7 @@
       width: 100%;
       border: none !important;
       outline: none;
-      background-color: #fafafa;
+      background-color: white;
       font-family: Poppins;
       font-size: 16px;
       font-weight: 400;

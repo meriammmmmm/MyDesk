@@ -21,17 +21,20 @@
   color: #344054;
 }
 .cancel-button-form {
-  width: 26%;
-  font-size: 17px;
+  border-radius: 8px;
+  width: 26% !important;
+  font-size: 17px !important;
 
-  margin-top: 30px;
-  color: #0188f7;
-  border: 1px solid #0188f7;
-  background-color: white;
+  margin-top: 30px !important;
+  color: #0188f7 !important;
+  border: 1px solid #0188f7 !important;
+  background-color: white !important;
 }
 .submit-button-form {
-  width: 26;
-  fon-size: 17px;
-  margin-top: 30px;
-  background-color: #0188f7;
+  border-radius: 8px;
+
+  width: 26% !important;
+  font-size: 17px !important;
+  margin-top: 30px !important;
+  background-color: #0188f7 !important;
 }

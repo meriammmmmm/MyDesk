@@ -16,12 +16,14 @@ const UserGroupeActionControl: React.FC<{
 }> = ({ id }) => {
   const dispatch = useAppDispatch()
   const [drawerVisible, setDrawerVisible] = useState(false)
+  const [isViewMode, setIsViewMode] = useState(false)
 
   useEffect(() => {
     dispatch(fetchUserGroupeById(id))
   }, [id, dispatch])
 
   const handleUpdate = () => {
+    setIsViewMode(false)
     setDrawerVisible(true)
     dispatch(fetchUserGroupeById(id))
   }
@@ -30,9 +32,12 @@ const UserGroupeActionControl: React.FC<{
 
   const handleRemove = (userGroupeId: string) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Delete User Groupe',
+      text: 'Are you sure you want to delete this user? This action cannot be undone.',
       icon: 'warning',
       showCancelButton: true,
+      showCloseButton: true,
+
       confirmButtonColor: '#506bcc',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
@@ -45,7 +50,9 @@ const UserGroupeActionControl: React.FC<{
     })
   }
   const handleView = async (userId: string) => {
+    setIsViewMode(true)
     setDrawerVisible(true)
+    dispatch(fetchUserGroupeById(id))
   }
   const actions = [
     { id: 1, icon: <BiEditAlt />, handler: handleUpdate },
@@ -68,7 +75,12 @@ const UserGroupeActionControl: React.FC<{
         ))}
       </div>
 
-      <EditGroupeForm id={id} visible={drawerVisible} onClose={() => setDrawerVisible(false)} />
+      <EditGroupeForm
+        isViewMode={isViewMode}
+        id={id}
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+      />
     </Space>
   )
 }

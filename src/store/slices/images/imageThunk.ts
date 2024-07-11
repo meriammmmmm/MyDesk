@@ -18,7 +18,6 @@ export const editImages = createAsyncThunk(
     try {
       if (newImagesData.status) {
         newImagesData.startTime = Date.now()
-        // Set startTime using utility function
       }
 
       const data = await updateImages(newImagesData, id)
@@ -46,6 +45,20 @@ export const addImages = createAsyncThunk(
       } else {
         return rejectWithValue('something went wrong')
       }
+    }
+  },
+)
+export const PatchImages = createAsyncThunk(
+  'images/PatchImages',
+  async (userData: any, { rejectWithValue }) => {
+    try {
+      const response = await createEditImages(userData, userData?.id)
+      if (response.status === 200) {
+        return response.data
+      }
+    } catch (error) {
+      console.error('Error editing user:', error)
+      return rejectWithValue('User could not be edited')
     }
   },
 )

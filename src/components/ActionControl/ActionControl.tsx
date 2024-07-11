@@ -12,6 +12,7 @@ const ActionControl: React.FC<{
 }> = ({ id }) => {
   const dispatch = useAppDispatch()
   const [drawerVisible, setDrawerVisible] = useState(false)
+  const [isViewMode, setIsViewMode] = useState(false)
   const [initialValues, setInitialValues] = useState({
     id: '',
     name: '',
@@ -20,7 +21,6 @@ const ActionControl: React.FC<{
     fullname: '',
     organization: '',
     lastsession: '',
-
     status: 'Offline',
   })
   const { user } = useAppSelector((state) => state.users)
@@ -45,31 +45,37 @@ const ActionControl: React.FC<{
   }, [user])
 
   const handleUpdate = async (userId: string) => {
+    setIsViewMode(false)
     setDrawerVisible(true)
     dispatch(fetchUserById(id))
   }
 
   const handleView = async (userId: string) => {
+    setIsViewMode(true)
     setDrawerVisible(true)
     dispatch(fetchUserById(id))
   }
 
   const handleRemove = (userId: string) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Delete User',
       icon: 'warning',
+      text: 'Are you sure you want to delete this user? This action cannot be undone.',
+      showCloseButton: true,
+
       showCancelButton: true,
       confirmButtonColor: '#506bcc',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Confirm',
     }).then(async (result) => {
       if (result.isConfirmed) {
         await dispatch(removeUser(userId)).unwrap()
         dispatch(fetchUsers())
-        message.success('user deleted succfully ')
+        message.success('User deleted successfully')
       }
     })
   }
+
   const actions = [
     { id: 1, icon: <BiEditAlt />, handler: handleUpdate },
     { id: 2, icon: <AiOutlineDelete />, handler: handleRemove },
@@ -97,6 +103,7 @@ const ActionControl: React.FC<{
         visible={drawerVisible}
         initialValues={initialValues}
         onClose={() => setDrawerVisible(false)}
+        isViewMode={isViewMode}
       />
     </Space>
   )

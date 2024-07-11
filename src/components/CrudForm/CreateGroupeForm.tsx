@@ -204,9 +204,6 @@ const CreateGroupeForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         />
       </div>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
-        <Button className="submit-button-form" type="submit" size="xl" onClick={handleSubmit}>
-          Submit
-        </Button>
         <Button
           type="button"
           onClick={() => {
@@ -216,6 +213,9 @@ const CreateGroupeForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
           className="cancel-button-form"
         >
           Cancel
+        </Button>
+        <Button className="submit-button-form" type="submit" size="xl" onClick={handleSubmit}>
+          Confirm
         </Button>
       </div>{' '}
     </form>

@@ -5,30 +5,38 @@ import { BiEditAlt } from 'react-icons/bi'
 import { useAppDispatch, useAppSelector } from '@src/store'
 import Swal from 'sweetalert2'
 import { fetchUserGroupeById } from '@src/store/slices/userGroupe/userGroupeThunk'
-import EditGroupeForm from '../CrudForm/EditGroupeForm'
 import {
   fetchImageGroupe,
+  fetchImageGroupeById,
   removeImageGrouper,
 } from '@src/store/slices/imageGroupe/imageGroupeThunk'
+import EditGroupeForm from '../CrudForm/EditImageGroupeForm'
 
 const ImageGroupeActionControl: React.FC<{
   id: string
 }> = ({ id }) => {
   const dispatch = useAppDispatch()
   const [drawerVisible, setDrawerVisible] = useState(false)
+  const [isViewMode, setIsViewMode] = useState(false)
 
   useEffect(() => {
-    dispatch(fetchUserGroupeById(id))
+    dispatch(fetchImageGroupeById(id))
   }, [id, dispatch])
 
   const handleUpdate = () => {
+    setIsViewMode(false)
+
     setDrawerVisible(true)
+    dispatch(fetchImageGroupeById(id))
   }
 
   const handleRemove = (userGroupeId: string) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Delete Image Groupe',
+      text: 'Are you sure you want to delete this user? This action cannot be undone.',
       icon: 'warning',
+      showCloseButton: true,
+
       showCancelButton: true,
       confirmButtonColor: '#506bcc',
       cancelButtonColor: '#d33',
@@ -42,7 +50,10 @@ const ImageGroupeActionControl: React.FC<{
     })
   }
   const handleView = async (userId: string) => {
+    setIsViewMode(true)
+
     setDrawerVisible(true)
+    dispatch(fetchUserGroupeById(id))
   }
 
   const actions = [
@@ -65,7 +76,12 @@ const ImageGroupeActionControl: React.FC<{
           </Button>
         ))}
       </div>
-      <EditGroupeForm id={id} visible={drawerVisible} onClose={() => setDrawerVisible(false)} />
+      <EditGroupeForm
+        isViewMode={isViewMode}
+        id={id}
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+      />
     </Space>
   )
 }

@@ -14,32 +14,34 @@ const ImageActionControl: React.FC<{
 }> = ({ id }) => {
   const dispatch = useAppDispatch()
   const [drawerVisible, setDrawerVisible] = useState(false)
+  const [isViewMode, setIsViewMode] = useState(false)
+
   useEffect(() => {
     dispatch(fetchImageById(id))
   }, [id])
   const handleUpdate = async (userId: string) => {
     try {
-      // dispatch(fetchUserById(userId))
+      setIsViewMode(false)
       setDrawerVisible(true)
+      dispatch(fetchImageById(id))
     } catch (error) {
       console.error('Error fetching user:', error)
     }
   }
   const { image } = useAppSelector((state) => state.images)
-  console.log(image)
 
   const handleView = async (userId: string) => {
-    // Your existing view logic
+    setIsViewMode(true)
+    setDrawerVisible(true)
+    dispatch(fetchImageById(id))
   }
   const [initialValues, setInitialValues] = useState({
     id: '',
     name: '',
-    email: '',
-    password: '',
-    fullname: '',
-    organization: '',
-    lastsession: '',
-    last_login_time: '',
+    dockerImage: '',
+    logoUrl: '',
+    description: '',
+    tag: [],
     status: 'Offline',
   })
 
@@ -48,20 +50,21 @@ const ImageActionControl: React.FC<{
       setInitialValues({
         id: String(image.id || ''),
         name: image.name || '',
-        email: image.email || '',
-        password: '',
-        fullname: image.fullname || '',
-        organization: image.organization || '',
-        lastsession: image.lastsession || '',
-        last_login_time: image.last_login_time || '',
+        dockerImage: image.dockerImage || '',
+        logoUrl: image.logoUrl || '',
+        description: image.description || '',
+        tag: image.tag || [],
         status: image.status ? 'Active' : 'Offline',
       })
     }
   }, [image])
   const handleRemove = (imageId: string) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Delete Image',
+      text: 'Are you sure you want to delete this user? This action cannot be undone.',
       icon: 'warning',
+      showCloseButton: true,
+
       showCancelButton: true,
       confirmButtonColor: '#506bcc',
       cancelButtonColor: '#d33',
@@ -93,7 +96,13 @@ const ImageActionControl: React.FC<{
         ))}
       </div>
 
-      <ImageEdit id={id} visible={drawerVisible} onClose={() => setDrawerVisible(false)} />
+      <ImageEdit
+        initialValues={initialValues}
+        isViewMode={isViewMode}
+        id={id}
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+      />
     </Space>
   )
 }

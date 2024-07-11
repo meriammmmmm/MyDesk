@@ -33,7 +33,8 @@ export const updateImages = async (newImagesData: any, id: string) => {
 
     return data // Return updated data if successful
   } catch (error) {
-    console.error('Error updating image:', error)
+    console.log(error)
+
     throw error // Rethrow or handle the error as needed
   }
 }
@@ -54,6 +55,19 @@ export async function createEditImages(newImages: any, id?: any): Promise<ApiRes
     }
   } else if (newImages.image?.startsWith?.(supabaseUrl)) {
     imagePath = newImages.image
+  } else if (!newImages.image && id) {
+    // When editing, if no new image is provided, retain the existing image path
+    const { data: existingData, error: fetchError } = await supabase
+      .from('images')
+      .select('image')
+      .eq('id', id)
+      .single()
+
+    if (fetchError) {
+      console.error(fetchError)
+      throw new Error('Could not fetch existing user data')
+    }
+    imagePath = existingData.image
   }
 
   let query

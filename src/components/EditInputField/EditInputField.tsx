@@ -8,6 +8,7 @@ interface IFieldProps {
   label: string
   class?: string
   redStar?: string
+  disabled?: boolean // Add the disabled property
 }
 
 interface IInputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -47,6 +48,7 @@ const EditInputField: React.FC<IInputFieldProps> = ({ formik, field, onChange, .
           onChange={handleChange}
           value={formik?.values[field?.name] || ''}
           className={formik?.touched[field?.name] && formik?.errors[field?.name] ? 'has-error' : ''}
+          disabled={field?.disabled} // Use the disabled property here
           {...props}
         />
         {field?.type === 'password' && formik?.values[field?.name] && (

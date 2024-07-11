@@ -40,3 +40,8 @@
 :where(.css-dev-only-do-not-override-k7429z).ant-select-multiple .ant-select-selection-item {
   height: 41px;
 }
+:where(.css-dev-only-do-not-override-k7429z).ant-select-multiple
+  .ant-select-selection-item-content {
+  align-items: center !important;
+  display: flex !important;
+}

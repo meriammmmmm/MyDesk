@@ -1,49 +1,80 @@
 import React, { useEffect } from 'react'
-import { Drawer } from 'antd'
+import { Drawer, Select, message } from 'antd'
 import { useFormik } from 'formik'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '@src/components/Button/Button'
 import EditInputField from '../EditInputField/EditInputField'
 import { Can } from '@src/casl/Can'
-import { editUser, fetchUsers } from '@src/store/slices/users/userThunk'
-import { RootState, useAppDispatch } from '@src/store'
+import LazyLoad from '@src/components/LazyLoad/LazyLoad'
+import { editUser, fetchUserById, fetchUsers } from '@src/store/slices/users/userThunk'
+import { RootState, useAppDispatch, useAppSelector } from '@src/store'
+import {
+  editUserGroupe,
+  fetchUserGroupe,
+  fetchUserGroupeById,
+} from '@src/store/slices/userGroupe/userGroupeThunk'
 import image from '../../assets/images/avatr.png'
+import {
+  editImageGroupe,
+  fetchImageGroupe,
+  fetchImageGroupeById,
+} from '@src/store/slices/imageGroupe/imageGroupeThunk'
 
 interface CrudFormProps {
   id: string
   visible: boolean
   onClose: () => void
-  initialValues: any
   isViewMode: boolean
 }
+const { Option } = Select
 
-const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues, isViewMode }) => {
+const EditGroupeForm: React.FC<CrudFormProps> = ({ id, isViewMode, visible, onClose }) => {
   const dispatch = useAppDispatch()
-  const user = useSelector((state: RootState) => state.users.user)
-
+  const { imageGroupe } = useAppSelector((state: RootState) => state.imagegroupes)
+  const [loading, setLoading] = React.useState(true)
+  const sectionsData = [
+    { id: 1, label: 'Communication' },
+    { id: 2, label: 'Desktop' },
+    { id: 3, label: 'Games' },
+    { id: 4, label: 'Office' },
+    { id: 5, label: 'Multimedia' },
+    { id: 6, label: 'Chat' },
+    { id: 7, label: 'Privacy' },
+  ]
+  const tagOptions = sectionsData.map((el) => ({ label: el.label, value: el.label }))
   useEffect(() => {
-    formik.setValues(initialValues)
-    return () => {
-      formik.resetForm()
+    dispatch(fetchUsers())
+  }, [, dispatch])
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchImageGroupeById(id)).then(() => setLoading(false))
+    } else {
+      setLoading(false)
     }
-  }, [initialValues, id])
+  }, [id, dispatch])
 
   const formik = useFormik({
-    initialValues: initialValues,
+    initialValues: imageGroupe || {
+      name: '',
+      description: '',
+      imageGroupe: [],
+      status: '',
+      tag: [],
+    },
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values.status)
-
       const payload = {
         ...values,
         status: values.status === 'active' ? true : false,
       }
-      dispatch(editUser(payload))
+      dispatch(editImageGroupe(payload))
       onClose()
-      dispatch(fetchUsers)
+      message.success('image groupe edited succesfully')
+      dispatch(fetchImageGroupe())
     },
   })
 
+  if (loading) return <LazyLoad />
   const getStatusStyle = (status: string) => {
     if (status === 'active') {
       return { backgroundColor: '#D1FADF', color: '#027A48' }
@@ -55,12 +86,12 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
   }
 
   return (
-    <Drawer visible={visible} onClose={onClose}>
+    <Drawer title="Edit User" placement="right" visible={visible} onClose={onClose}>
       <div className="drawer-header">
         <img src={image} alt="User Avatar" className="user-avatar" />
         <div className="user-details">
-          <div>{user.name}</div>
-          <div>{user.email}</div>
+          <div>{imageGroupe.name}</div>
+          <div>{imageGroupe.email}</div>
         </div>
         <span className="close" onClick={onClose}>
           &times;
@@ -80,38 +111,15 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
               disabled: isViewMode,
             }}
           />
+
           <EditInputField
             className="editForm"
             formik={formik}
             field={{
-              name: 'email',
-              type: 'email',
-              placeholder: 'Enter email',
-              label: 'Email',
-              class: 'crud-form-field',
-              disabled: isViewMode,
-            }}
-          />
-          <EditInputField
-            className="editForm"
-            formik={formik}
-            field={{
-              name: 'password',
-              type: 'password',
-              placeholder: 'Enter your password',
-              label: 'Password',
-              class: 'crud-form-field',
-              disabled: isViewMode,
-            }}
-          />
-          <EditInputField
-            className="editForm"
-            formik={formik}
-            field={{
-              name: 'lastname',
+              name: 'description',
               type: 'text',
-              placeholder: 'Enter your lastname',
-              label: 'Lastname',
+              placeholder: 'Enter your description',
+              label: 'description',
               class: 'crud-form-field',
               disabled: isViewMode,
             }}
@@ -120,22 +128,10 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
             className="editForm"
             formik={formik}
             field={{
-              name: 'organization',
+              name: 'imageGroupe',
               type: 'text',
-              placeholder: 'Enter your organization',
-              label: 'Organization',
-              class: 'crud-form-field',
-              disabled: isViewMode,
-            }}
-          />
-          <EditInputField
-            className="editForm"
-            formik={formik}
-            field={{
-              name: 'lastsession',
-              type: 'text',
-              placeholder: 'Enter your last session',
-              label: 'Last Session',
+              placeholder: 'Enter your imageGroupe',
+              label: 'imageGroupe',
               class: 'crud-form-field',
               disabled: isViewMode,
             }}
@@ -163,6 +159,26 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
               <option value="active">Active</option>
               <option value="offline">Offline</option>
             </select>
+          </div>
+          <div className="editFormUsers">
+            <label htmlFor="Tags">Tags</label>
+            <Select
+              id="tag"
+              mode="multiple"
+              allowClear
+              style={{ width: '100%', marginBottom: '1rem' }}
+              placeholder="Select tags"
+              onChange={(value) => formik.setFieldValue('tag', value)}
+              onBlur={formik.handleBlur}
+              value={formik.values.tag}
+              disabled={isViewMode}
+            >
+              {tagOptions?.map((tag: any) => (
+                <Option key={tag.id} value={tag.label}>
+                  {tag.label}
+                </Option>
+              ))}
+            </Select>
           </div>
           <Can I="create" a="domain">
             <EditInputField
@@ -198,4 +214,4 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
   )
 }
 
-export default CrudForm
+export default EditGroupeForm

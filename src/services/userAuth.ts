@@ -25,15 +25,12 @@ export async function deleteUser(id: any) {
 }
 
 interface ApiResponse {
-  status: number // Adjust type as per your API response
-  data: any // Adjust type based on your actual response structure
+  status: number
+  data: any
 }
 export async function createEditUser(newImages: any, id?: any): Promise<ApiResponse> {
   let imagePath = null
-  interface ApiResponse {
-    status: number // Adjust type as per your API response
-    data: any // Adjust type based on your actual response structure
-  }
+
   if (newImages.image instanceof File) {
     const imageName = `${Math.random()}-${newImages.image.name.replaceAll('/', '')}`
     imagePath = `${supabaseUrl}/storage/v1/object/public/users/${imageName}`
@@ -44,10 +41,22 @@ export async function createEditUser(newImages: any, id?: any): Promise<ApiRespo
 
     if (storageError) {
       console.error(storageError)
-      throw new Error('User  could not be uploaded')
+      throw new Error('User image could not be uploaded')
     }
   } else if (newImages.image?.startsWith?.(supabaseUrl)) {
     imagePath = newImages.image
+  } else if (!newImages.image && id) {
+    const { data: existingData, error: fetchError } = await supabase
+      .from('users')
+      .select('image')
+      .eq('id', id)
+      .single()
+
+    if (fetchError) {
+      console.error(fetchError)
+      throw new Error('Could not fetch existing user data')
+    }
+    imagePath = existingData.image
   }
 
   let query
@@ -68,7 +77,7 @@ export async function createEditUser(newImages: any, id?: any): Promise<ApiRespo
     throw new Error('User could not be created/edited')
   }
 
-  return data
+  return { status: 200, data }
 }
 export async function getUserById(id: any) {
   const { data, error } = await supabase.from('users').select('*').eq('id', id).single()

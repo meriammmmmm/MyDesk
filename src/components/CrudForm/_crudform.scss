@@ -62,3 +62,9 @@
   border-bottom: 1px solid grey !important;
   width: 100%;
 }
+:where(.css-dev-only-do-not-override-k7429z).ant-drawer .ant-drawer-mask {
+  background-color: rgba(102, 112, 133, 0.8);
+}
+.editFormUsers {
+  margin-top: 1rem;
+}

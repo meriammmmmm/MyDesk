@@ -102,14 +102,38 @@ tr {
   font-weight: bold;
   border-radius: 4px;
   padding: 4px 8px;
+  width: 70px;
+  border-radius: 16px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  span {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #666;
+    border-radius: 50%;
+  }
 }
 
 .status-tag.active {
-  background-color: lightgreen;
-  color: white;
+  background-color: rgba(209, 250, 223, 1);
+  color: rgba(2, 122, 72, 1);
+  span {
+    background-color: rgba(2, 122, 72, 1);
+    border-radius: 50%;
+  }
 }
 
 .status-tag.offline {
   background-color: #ffcccc;
   color: #cc0000;
+  span {
+    background-color: #cc0000;
+  }
 }

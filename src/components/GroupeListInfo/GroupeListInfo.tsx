@@ -56,7 +56,7 @@ const GroupeListInfo = ({ setToggleColumn, title, itemsNumber, isUserListInfo }:
       <div className="client-list-info">
         <div className="main-title">
           <h1>{title}</h1>
-          <p>{itemsNumber || 0} users</p>
+          <p>{itemsNumber || 0} groupe</p>
         </div>
         <div className="admin-user-creation">
           <div className="admin-user-creation-search">
@@ -69,7 +69,7 @@ const GroupeListInfo = ({ setToggleColumn, title, itemsNumber, isUserListInfo }:
             />
           </div>
           <Button className={`admin-user-creation-btn`} onClick={() => handleAdd()}>
-            {width < 600 ? '+' : isUserListInfo ? 'Create User' : 'Create Role'}
+            {width < 600 ? '+' : isUserListInfo ? ' + Add Groupe' : 'Create Role'}
           </Button>
         </div>
       </div>
