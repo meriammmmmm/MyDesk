@@ -22,7 +22,6 @@ interface CrudFormProps {
 const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues, isViewMode }) => {
   const dispatch = useAppDispatch()
   const image = useSelector((state: RootState) => state.images.image)
-  console.log(image)
   const { Option } = Select
 
   useEffect(() => {
@@ -36,8 +35,6 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
     initialValues: initialValues,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values.status)
-
       const payload = {
         ...values,
         status: values.status === 'active' ? true : false,

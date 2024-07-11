@@ -89,25 +89,21 @@ const NavbarAdmin: React.FC<INavbarProps> = ({
         </div>
       ),
       disabled: true,
-      onClick: () => console.log('user info'),
     },
     {
       key: '2',
       label: <p>Profile</p>,
       icon: <ProfileIcon style={{ stroke: 'black', width: '18px', height: '18px' }} />,
-      onClick: () => console.log('profile'),
     },
     {
       key: '3',
       label: <p>Settings</p>,
       icon: <SettingsIcon style={{ stroke: 'black', width: '18px', height: '18px' }} />,
-      onClick: () => console.log('Settings'),
     },
     {
       key: '4',
       label: <p onClick={handleLogout}>logout</p>,
       icon: <LogoutIcon style={{ stroke: 'black', width: '18px', height: '18px' }} />,
-      onClick: () => console.log('logout'),
     },
   ]
   return (

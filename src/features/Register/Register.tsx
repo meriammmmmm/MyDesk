@@ -47,10 +47,7 @@ const Register = () => {
       const changedValues = getChangedValues(values, initialValues)
       dispatch(register(changedValues))
         .unwrap()
-        .then(() => {
-          console.log('Account created successfully')
-          // navigate(PATH.LOGIN)
-        })
+        .then(() => {})
         .catch((err) => {
           alert(err?.message || 'something-went-wrong')
         })

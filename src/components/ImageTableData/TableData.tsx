@@ -63,6 +63,7 @@ const ImageTableData: React.FC<TableDataProp> = ({
       key: 'status',
       render: (status: any) => (
         <Tag className={`status-tag ${status ? 'active' : 'offline'}`}>
+          <span></span>
           {status ? 'Active' : 'Offline'}
         </Tag>
       ),

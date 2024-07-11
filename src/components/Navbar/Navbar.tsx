@@ -90,7 +90,6 @@ const Navbar = () => {
         </a>
       ), // Navigate to /user
       icon: <ProfileIcon style={{ stroke: '#177C9A', width: '18px', height: '18px' }} />,
-      onClick: () => console.log('profile'),
     },
     {
       key: '3',

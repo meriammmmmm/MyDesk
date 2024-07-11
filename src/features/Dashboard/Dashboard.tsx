@@ -1,39 +1,15 @@
-import { useEffect, useState } from 'react'
-import Switch from '@mui/material/Switch'
-import Box from '@mui/material/Box'
-import Slider from '@mui/material/Slider'
-import { styled } from '@mui/system'
-import low from '../../assets/images/low.png'
-import high from '../../assets/images/high.png'
-import medium from '../../assets/images/medium.png'
-import cpu from '../../assets/icons/cpu.svg'
-import cpu1 from '../../assets/icons/cpu1.svg'
-import disk from '../../assets/icons/disk.svg'
-import ram from '../../assets/icons/ram.svg'
+import { Key, useEffect, useState } from 'react'
+
 import { useAppDispatch } from '@src/store'
 import { fetchImages, editImages } from '@src/store/slices/images/imageThunk'
 import { useSelector } from 'react-redux'
-import Button from '@src/components/Button/Button'
 import Modal from './components/DashbordModal/DashbordModal'
-import User from '../Admin/User/User'
 
 export interface Tool {
   name: string
   image: string
-  id: string // Ensure id is part of Tool interface
+  id: string
 }
-
-const CustomSwitch = styled(Switch)(({ theme }) => ({
-  '& .MuiSwitch-switchBase': {
-    color: '#fff',
-    '&.Mui-checked': {
-      color: 'white !important',
-    },
-    '&.Mui-checked + .MuiSwitch-track': {
-      backgroundColor: '#2196f3',
-    },
-  },
-}))
 
 const Dashboard = () => {
   const [selectedTool, setSelectedTool] = useState<Tool | null>(null)
@@ -44,7 +20,7 @@ const Dashboard = () => {
   const [diskValue, setDiskValue] = useState(2)
   const [selectedView, setSelectedView] = useState('All')
 
-  const handleClick = (tool: any) => {
+  const handleClick = (tool: Tool) => {
     if (tool.id) {
       setSelectedTool(tool)
     } else {
@@ -57,15 +33,15 @@ const Dashboard = () => {
     if (index === 0) {
       setCpuValue(2)
       setRamValue(2)
-      setDiskValue(2)
+      setDiskValue(16)
     } else if (index === 1) {
       setCpuValue(4)
-      setRamValue(4)
-      setDiskValue(4)
+      setRamValue(8)
+      setDiskValue(64)
     } else if (index === 2) {
       setCpuValue(8)
-      setRamValue(8)
-      setDiskValue(8)
+      setRamValue(32)
+      setDiskValue(512)
     }
   }
 
@@ -104,27 +80,22 @@ const Dashboard = () => {
       try {
         await dispatch(
           editImages({
-            newImagesData: { status: true, startTime: Date.now() },
+            newImagesData: {
+              status: true,
+              startTime: Date.now(),
+              cpu: cpuValue,
+              ramSize: ramValue,
+              diskSize: diskValue,
+            },
             id: selectedTool.id,
           }),
         )
+
         handleClose()
       } catch (error) {
         console.error('Failed to update image:', error)
       }
     }
-  }
-
-  const marks = [
-    { value: 2, label: '2' },
-    { value: 4, label: '4' },
-    { value: 6, label: '6' },
-    { value: 8, label: '8' },
-    { value: 12, label: '12' },
-  ]
-
-  function valuetext(value: number) {
-    return `${value} CPU`
   }
 
   const dispatch = useAppDispatch()
@@ -142,13 +113,12 @@ const Dashboard = () => {
   const handleSwitch = (view: any) => {
     setSelectedView(view)
   }
-  console.log(getFilteredImages)
 
   return (
     <>
       {' '}
       <div className="tool-list">
-        {getFilteredImages().map((tool: any, index: any) => (
+        {getFilteredImages().map((tool: Tool, index: Key | null | undefined) => (
           <div key={index} className="tool" onClick={() => handleClick(tool)}>
             <img src={tool.image} />
             <h3>{tool.name}</h3>
@@ -169,59 +139,30 @@ const Dashboard = () => {
             handleRamChange={handleRamChange}
             handleDiskChange={handleDiskChange}
             handleSubmit={handleSubmit}
+            imageId={''}
           />
         )}
       </div>
-      <div className="switcher-container-dashboard  ">
+      <div className="switcher-container-dashboard">
         <div className="tab-switcher-dashboard">
-          <button
-            className={`switcher-button ${selectedView === 'All' ? 'active' : ''}`}
-            onClick={() => handleSwitch('All')}
-          >
-            All images{' '}
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Communication' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Communication')}
-          >
-            Communication
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Desktop' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Desktop')}
-          >
-            Desktop
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Games' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Games')}
-          >
-            Games
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Office' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Office')}
-          >
-            Office
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Multimedia' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Multimedia')}
-          >
-            Multimedia
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Chat' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Chat')}
-          >
-            Chat
-          </button>
-          <button
-            className={`switcher-button ${selectedView === 'Privacy' ? 'active' : ''}`}
-            onClick={() => handleSwitch('Privacy')}
-          >
-            Privacy
-          </button>
+          {[
+            'All',
+            'Communication',
+            'Desktop',
+            'Games',
+            'Office',
+            'Multimedia',
+            'Chat',
+            'Privacy',
+          ].map((view) => (
+            <button
+              key={view}
+              className={`switcher-button ${selectedView === view ? 'active' : ''}`}
+              onClick={() => handleSwitch(view)}
+            >
+              {view}
+            </button>
+          ))}
         </div>
       </div>
     </>

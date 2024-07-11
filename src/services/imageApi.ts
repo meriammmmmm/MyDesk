@@ -18,24 +18,22 @@ export async function getImages() {
 // apiCabins.js
 
 export const updateImages = async (newImagesData: any, id: string) => {
-  const { status, startTime } = newImagesData // Extract status and startTime from newImagesData
+  const { status, startTime, cpu, diskSize, ramSize } = newImagesData
 
   try {
     const { data, error } = await supabase
       .from('images')
-      .update({ status, startTime })
+      .update({ status, startTime, cpu, diskSize, ramSize })
       .eq('id', id)
       .select('*')
 
     if (error) {
-      throw new Error(error.message) // Throw error if update fails
+      throw new Error(error.message)
     }
 
-    return data // Return updated data if successful
+    return data
   } catch (error) {
-    console.log(error)
-
-    throw error // Rethrow or handle the error as needed
+    throw error
   }
 }
 export async function createEditImages(newImages: any, id?: any): Promise<ApiResponse> {

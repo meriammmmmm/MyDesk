@@ -98,7 +98,6 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
   const handleImageUpload = (files: FileWithPreview[]) => {
     if (files.length > 0) {
       setFormData({ ...formData, image: files[0] })
-      console.log(files[0])
     }
   }
 

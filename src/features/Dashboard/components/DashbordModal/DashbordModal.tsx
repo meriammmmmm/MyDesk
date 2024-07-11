@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, FC } from 'react'
 import Switch from '@mui/material/Switch'
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
@@ -11,9 +11,12 @@ import cpu1 from '../../../../assets/icons/cpu1.svg'
 import disk from '../../../../assets/icons/disk.svg'
 import ram from '../../../../assets/icons/ram.svg'
 import { useAppDispatch } from '@src/store'
-import { fetchImages, editImages } from '@src/store/slices/images/imageThunk'
+import { fetchImages, editImages } from '@src/store/slices/images/imageThunk' // Import editImages
 import { useSelector } from 'react-redux'
 import Button from '@src/components/Button/Button'
+import ConfigurationCard from './ConfigurationCard' // Adjust the import path as needed
+import SliderComponent from './SliderComponent' // Adjust the import path as needed
+
 interface ModalProps {
   selectedTool: any
   selectedCardIndex: number | null
@@ -28,7 +31,9 @@ interface ModalProps {
   handleRamChange: (event: Event, newValue: number | number[]) => void
   handleDiskChange: (event: Event, newValue: number | number[]) => void
   handleSubmit: () => void
+  imageId: string // Assuming the id is passed as a prop
 }
+
 const CustomSwitch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-switchBase': {
     color: '#fff',
@@ -40,7 +45,41 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     },
   },
 }))
-const Modal: React.FC<ModalProps> = ({
+
+const marks = {
+  cpu: [
+    { value: 2, label: '2' },
+    { value: 4, label: '4' },
+    { value: 6, label: '6' },
+    { value: 8, label: '8' },
+    { value: 12, label: '12' },
+  ],
+  disk: [
+    { value: 16, label: '16' },
+    { value: 32, label: '32' },
+    { value: 64, label: '64' },
+    { value: 120, label: '120' },
+    { value: 256, label: '256' },
+    { value: 512, label: '512' },
+  ],
+  ram: [
+    { value: 2, label: '2' },
+    { value: 4, label: '4' },
+    { value: 6, label: '6' },
+    { value: 8, label: '8' },
+    { value: 12, label: '12' },
+    { value: 16, label: '16' },
+    { value: 32, label: '32' },
+  ],
+}
+
+const configs = [
+  { label: 'low', cpu: 2, disk: 16, ram: 2, img: low },
+  { label: 'medium', cpu: 4, disk: 64, ram: 8, img: medium },
+  { label: 'high', cpu: 8, disk: 512, ram: 32, img: high },
+]
+
+const Modal: FC<ModalProps> = ({
   selectedTool,
   selectedCardIndex,
   switchOn,
@@ -54,43 +93,27 @@ const Modal: React.FC<ModalProps> = ({
   handleRamChange,
   handleDiskChange,
   handleSubmit,
+  imageId, // Added imageId as a prop
 }) => {
-  const cpumarks = [
-    { value: 2, label: '2' },
-    { value: 4, label: '4' },
-    { value: 6, label: '6' },
-    { value: 8, label: '8' },
-    { value: 12, label: '12' },
-  ]
-  const diskmarks = [
-    { value: 16, label: '16' },
-    { value: 32, label: '32' },
-    { value: 64, label: '64' },
-    { value: 120, label: '120' },
-    { value: 256, label: '256' },
-
-    { value: 512, label: '512' },
-  ]
-  const rammarks = [
-    { value: 2, label: '2' },
-    { value: 4, label: '4' },
-    { value: 6, label: '6' },
-    { value: 8, label: '8' },
-    { value: 12, label: '12' },
-    { value: 16, label: '16' },
-    { value: 32, label: '32' },
-  ]
-
-  function valuetext(value: number) {
-    return `${value} CPU`
-  }
-
   const dispatch = useAppDispatch()
-  const { images } = useSelector((state: any) => state.images)
 
   useEffect(() => {
     dispatch(fetchImages())
   }, [dispatch])
+
+  const onSubmit = () => {
+    const payload = {
+      newImagesData: {
+        cpu: cpuValue,
+        diskSize: diskValue,
+        ramSize: ramValue,
+      },
+      id: imageId,
+    }
+
+    dispatch(editImages(payload))
+    handleSubmit()
+  }
 
   return (
     <div className="modal">
@@ -101,56 +124,21 @@ const Modal: React.FC<ModalProps> = ({
           </span>
           <div className="model-content-header">
             <div>
-              {' '}
               <h2>Configuring desktop {selectedTool.name}</h2>
               <p>Start to config your desktop</p>
             </div>
-            <img style={{ width: '4rem' }} src={selectedTool.image} alt="" />
+            <img style={{ width: '4rem' }} src={selectedTool.image} alt={selectedTool.name} />
           </div>
         </div>
         <div className={`configuration-cards ${switchOn ? '' : 'disabled'}`}>
-          {['low', 'medium', 'high'].map((config, index) => (
-            <div
+          {configs.map((config, index) => (
+            <ConfigurationCard
               key={index}
-              className={`configuration-cards-container ${
-                selectedCardIndex === index ? 'selected' : ''
-              }`}
-              onClick={() => handleCardClick(index)}
-            >
-              <img
-                src={config === 'low' ? low : config === 'medium' ? medium : high}
-                alt=""
-                className="configuration-image"
-              />
-
-              <div className="configuration-cards-details">
-                <div className="configuration-details">
-                  <img src={cpu} alt="" />
-                  <p className="congfiguration-title">CPU</p>
-                </div>
-                <p className="configuration-number">
-                  {config === 'low' ? '2' : config === 'medium' ? '4' : '8'} CPU
-                </p>
-              </div>
-              <div className="configuration-cards-details">
-                <div className="configuration-details">
-                  <img src={disk} alt="" />
-                  <p className="congfiguration-title">Disk Size</p>
-                </div>
-                <p className="configuration-number">
-                  {config === 'low' ? '16' : config === 'medium' ? '64' : '512'} GB
-                </p>
-              </div>
-              <div className="configuration-cards-details">
-                <div className="configuration-details">
-                  <img src={ram} alt="" />
-                  <p className="congfiguration-title">Ram Size</p>
-                </div>
-                <p className="configuration-number">
-                  {config === 'low' ? '2' : config === 'medium' ? '8' : '32'} GB
-                </p>
-              </div>
-            </div>
+              config={config}
+              index={index}
+              selectedCardIndex={selectedCardIndex}
+              handleCardClick={handleCardClick}
+            />
           ))}
         </div>
         <div className="personalise">
@@ -158,82 +146,39 @@ const Modal: React.FC<ModalProps> = ({
           <span className="line"></span>
           <CustomSwitch checked={switchOn} onChange={handleSwitchChange} />
         </div>
-        <div className="personal-slider-container">
-          <div className="personal-slider">
-            <div className="title">
-              <img src={cpu1} alt="" />
-              <p>Number of Cores (CPU)</p>
-            </div>
-            <Box sx={{ width: 300 }}>
-              <Slider
-                aria-label="Number of cores"
-                defaultValue={cpuValue}
-                getAriaValueText={valuetext}
-                step={2}
-                marks={cpumarks}
-                valueLabelDisplay="on"
-                min={2}
-                max={12}
-                disabled={switchOn}
-                onChange={handleCpuChange}
-              />
-            </Box>
-          </div>
-          <p className="personal-configuartion">{cpuValue} CPU</p>
-        </div>
-        <div className="personal-slider-container">
-          <div className="personal-slider">
-            <div className="title">
-              <img src={disk} alt="" />
-              <p>Disk Size (GB)</p>
-            </div>
-            <Box sx={{ width: 300 }}>
-              <Slider
-                aria-label="Disk Size"
-                defaultValue={diskValue}
-                getAriaValueText={(value) => `${value} GB`}
-                step={16}
-                marks={diskmarks}
-                valueLabelDisplay="on"
-                min={16}
-                max={512}
-                disabled={switchOn}
-                onChange={handleDiskChange}
-              />
-            </Box>
-          </div>
-          <p className="personal-configuartion">{diskValue} GB</p>
-        </div>
-        <div className="personal-slider-container">
-          <div className="personal-slider">
-            <div className="title">
-              <img src={ram} alt="" />
-              <p>Ram Size (GB)</p>
-            </div>
-            <Box sx={{ width: 300 }}>
-              <Slider
-                aria-label="Ram Size"
-                defaultValue={ramValue}
-                getAriaValueText={(value) => `${value} GB`}
-                step={2}
-                marks={rammarks}
-                valueLabelDisplay="on"
-                min={2}
-                max={16}
-                disabled={switchOn}
-                onChange={handleRamChange}
-              />
-            </Box>
-          </div>
-          <p className="personal-configuartion">{ramValue} GB</p>
-        </div>
+        <SliderComponent
+          icon={cpu1}
+          title="Number of Cores (CPU)"
+          value={cpuValue}
+          onChange={handleCpuChange}
+          marks={marks.cpu}
+          min={2}
+          max={12}
+          disabled={switchOn}
+        />
+        <SliderComponent
+          icon={disk}
+          title="Disk Size (GB)"
+          value={diskValue}
+          onChange={handleDiskChange}
+          marks={marks.disk}
+          min={16}
+          max={512}
+          disabled={switchOn}
+        />
+        <SliderComponent
+          icon={ram}
+          title="Ram Size (GB)"
+          value={ramValue}
+          onChange={handleRamChange}
+          marks={marks.ram}
+          min={2}
+          max={32}
+          disabled={switchOn}
+        />
+
         <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}
         >
           <Button
             type="submit"
@@ -259,6 +204,7 @@ const Modal: React.FC<ModalProps> = ({
               border: '1px solid #0188F7',
               backgroundColor: 'white',
             }}
+            className="cancel-button-modal"
             size="xl"
             onClick={handleClose}
           >

@@ -51,7 +51,6 @@ export const register = createAsyncThunk<User, RegisterPayload>(
   'auth/register',
   async (query, { rejectWithValue }) => {
     try {
-      console.log(query)
       const user = await supabaseSignup(query)
       if (!user) throw new Error('Registration failed')
       return user
@@ -89,7 +88,6 @@ export const updatePassword = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      console.log('Updating password with:', { oldPassword, password, token })
       await updateCurrentUser({ password }) // Ensure this function is correctly imported and defined
 
       // Optionally, return data or handle other actions upon success

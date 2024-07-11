@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Drawer } from 'antd'
+import { Drawer, message } from 'antd'
 import { useFormik } from 'formik'
 import { useSelector } from 'react-redux'
 import Button from '@src/components/Button/Button'
@@ -32,14 +32,13 @@ const CrudForm: React.FC<CrudFormProps> = ({ id, visible, onClose, initialValues
     initialValues: initialValues,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values.status)
-
       const payload = {
         ...values,
         status: values.status === 'active' ? true : false,
       }
       dispatch(editUser(payload))
       onClose()
+      message.success('user edited successfuly')
       dispatch(fetchUsers)
     },
   })

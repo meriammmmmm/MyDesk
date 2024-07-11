@@ -9,7 +9,6 @@ const Organization = ({ formData, setFormData }: any) => {
       [field]: value,
     })
   }
-  console.log(formData)
 
   return (
     <section className="Establishment-Section">

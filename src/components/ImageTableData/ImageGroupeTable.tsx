@@ -36,7 +36,7 @@ const GroupeTable: React.FC<TableDataProp> = ({ data }: TableDataProp) => {
       key: 'status',
       render: (status: any) => (
         <Tag className={`status-tag ${status ? 'active' : 'offline'}`}>
-          {status ? 'Active' : 'Offline'}
+          <span></span> {status ? 'Active' : 'Offline'}
         </Tag>
       ),
     },

@@ -16,7 +16,6 @@ export default function SelectComp({ options, label, touched, error, value, setV
     autoClearSearchValue: false,
   }
 
-  console.log(options, 'jhjhjhhj')
   return (
     <div className="modal-field">
       <label className="modal-field-label">{label}</label>

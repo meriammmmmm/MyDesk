@@ -34,9 +34,7 @@ const Login = () => {
       const changedValues = getChangedValues(values, initialValues)
       dispatch(login(changedValues))
         .unwrap()
-        .then(() => {
-          console.log('welcome')
-        })
+        .then(() => {})
         .catch((err) => {
           alert(err || 'something-went-wrong')
         })

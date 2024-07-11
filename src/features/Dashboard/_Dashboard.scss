@@ -4,6 +4,7 @@
   grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   gap: 16px;
   padding: 89px;
+  padding-bottom: 0rem;
 }
 
 .tool {
@@ -227,4 +228,18 @@
 .css-cp2j25-MuiSlider-thumb::before {
   width: 53% !important;
   height: 45% !important;
+}
+.cancel-button-modal {
+  background-color: white !important;
+  padding: 0.5rem 3rem;
+  border-radius: 0.5rem;
+  border-color: transparent;
+  background: #d7edff;
+
+  border: 1px solid #0188f7;
+  font-family: Inter;
+  font-size: 12.69px;
+  font-weight: 600;
+  line-height: 19.03px;
+  text-align: left;
 }

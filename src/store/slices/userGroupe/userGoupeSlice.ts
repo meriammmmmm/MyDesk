@@ -43,8 +43,6 @@ const userGroupeSlice = createSlice({
         state.error = null
       })
       .addCase(fetchUserGroupeById.fulfilled, (state, action) => {
-        console.log(action.payload)
-
         state.isLoading = false
         state.userGroupe = action.payload
       })

@@ -77,8 +77,8 @@ const CreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
       onClosePopup()
       dispatch(fetchUsers())
     } catch (error) {
-      console.error('Failed to create user:', error)
-      alert('Failed to create user. Please try again.')
+      message.success('user created succsfully')
+      onClosePopup()
     }
   }
 

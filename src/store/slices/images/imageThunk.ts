@@ -21,6 +21,7 @@ export const editImages = createAsyncThunk(
       }
 
       const data = await updateImages(newImagesData, id)
+
       thunkAPI.dispatch(fetchImages())
       return data
     } catch (error) {

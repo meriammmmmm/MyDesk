@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import User from './User'
 import Group from './Groupe'
 
 const UserGroupSwitcher = () => {
   const [selectedView, setSelectedView] = useState('User')
 
-  const handleSwitch = (view: any) => {
+  const handleSwitch = (view: SetStateAction<string>) => {
     setSelectedView(view)
   }
 
