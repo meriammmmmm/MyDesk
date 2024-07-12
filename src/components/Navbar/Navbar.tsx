@@ -3,12 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import arrowleft from '../../assets/icons/navbar/arrow-left.svg'
-import arrowright from '../../assets/icons/navbar/arrow-right.svg'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/sidebar/profile.svg'
-import { ReactComponent as SettingsIcon } from '../../assets/icons/navbar/settings.svg'
+
 import { ReactComponent as LogoutIcon } from '../../assets/icons/navbar/logout.svg'
-import { useAppDispatch } from '../../store'
+import { useAppDispatch, useAppSelector } from '../../store'
 import { useTranslation } from 'react-i18next'
 import Dropdown from '../DropDown/DropDown'
 import CustomAvatar from '../Avatar/Avatar'
@@ -22,9 +20,8 @@ import { fetchImages, editImages } from '@src/store/slices/images/imageThunk'
 import { useSelector } from 'react-redux'
 
 const Navbar = () => {
-  const { width } = useWindowSize()
   const [transition, setTransition] = useState<boolean>(false)
-  const { images } = useSelector((state: any) => state.images)
+  const { images } = useAppSelector((state) => state.images)
   const filteredImages = images.filter((image: { status: boolean }) => image.status === true)
 
   useEffect(() => {
@@ -55,7 +52,7 @@ const Navbar = () => {
     dispatch(fetchImages())
   }, [dispatch])
 
-  const toggleStatus = (image: any) => {
+  const toggleStatus = (image: { status: boolean; id: string }) => {
     const newStatus = !image.status
     if (newStatus) {
       const startTime = Date.now()
@@ -65,7 +62,7 @@ const Navbar = () => {
     }
   }
 
-  const calculateElapsedTime = (index: number, startTime: any) => {
+  const calculateElapsedTime = (index: number, startTime: number) => {
     const now = Date.now()
     const diff = now - startTime
     const seconds = Math.floor((diff / 1000) % 60)
@@ -133,51 +130,33 @@ const Navbar = () => {
               }}
               spaceBetween={10}
             >
-              {filteredImages.map(
-                (
-                  item: {
-                    image: string | undefined
-                    title: string | undefined
-                    name:
-                      | string
-                      | number
-                      | boolean
-                      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-                      | React.ReactFragment
-                      | React.ReactPortal
-                      | null
-                      | undefined
-                    startTime: any
-                  },
-                  index: React.Key | null | undefined,
-                ) => (
-                  <SwiperSlide key={index}>
-                    <div className="item-image">
-                      <img src={item.image} alt={item.title} className="item-image" />
-                      <div className="item-informatin">
-                        <h2 className="item-title">{item.name}</h2>
-                        <div className="item-timer">
-                          <img src={timer} alt="" className="timer" />
-                          <p className="item-date">
-                            {calculateElapsedTime(index, item.startTime)}
-                          </p>{' '}
-                        </div>
+              {filteredImages.map((item: any, index: number) => (
+                <SwiperSlide key={index}>
+                  <div className="item-image">
+                    <img src={item.image} alt={item.title} className="item-image" />
+                    <div className="item-informatin">
+                      <h2 className="item-title">{item.name}</h2>
+                      <div className="item-timer">
+                        <img src={timer} alt="" className="timer" />
+                        <p className="item-date">
+                          {calculateElapsedTime(index, item.startTime)}
+                        </p>{' '}
                       </div>
                     </div>
+                  </div>
 
-                    <img
-                      style={{ width: '24px' }}
-                      src={turn}
-                      className="turn-off"
-                      alt=""
-                      onClick={() => toggleStatus(item)}
-                    />
-                  </SwiperSlide>
-                ),
-              )}
+                  <img
+                    style={{ width: '24px' }}
+                    src={turn}
+                    className="turn-off"
+                    alt=""
+                    onClick={() => toggleStatus(item)}
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
           ) : (
-            filteredImages.map((item: any, index: any) => (
+            filteredImages.map((item: any, index: number) => (
               <div key={index}>
                 <div className="item-image-4">
                   <img src={item.image} alt={item.title} className="item-image" />
@@ -188,7 +167,6 @@ const Navbar = () => {
                       <p className="item-date">
                         {calculateElapsedTime(index, item.startTime)}
                       </p>{' '}
-                      {/* Pass index */}
                     </div>
                   </div>
                   <img src={turn} alt="" onClick={() => toggleStatus(item)} />
