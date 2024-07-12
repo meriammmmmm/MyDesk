@@ -32,8 +32,6 @@ const User = () => {
         />
         <GroupeData data={userGroupes} />
       </div>
-
-      <DrawerComp />
     </div>
   )
 }

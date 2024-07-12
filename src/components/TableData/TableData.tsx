@@ -5,19 +5,13 @@ import ActionControl from '../ActionControl/ActionControl'
 
 interface TableDataProp {
   data: readonly object[] | undefined
-  isUserTable?: any
-  posts?: any
-  GuestUser?: any
-  group?: any
+  isUserTable?: boolean
+  posts?: string[]
+  GuestUser?: string
+  group?: string[]
 }
 
-const TableData: React.FC<TableDataProp> = ({
-  data,
-  isUserTable,
-  posts,
-  GuestUser,
-  group,
-}: TableDataProp) => {
+const TableData: React.FC<TableDataProp> = ({ data }: TableDataProp) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
 
   const columns = [
@@ -72,15 +66,12 @@ const TableData: React.FC<TableDataProp> = ({
     },
   ]
 
-  // Use actual data if provided, otherwise generate fake data
   const dataSource = data || generateFakeData()
 
-  // Handle row selection change
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     setSelectedRowKeys(newSelectedRowKeys)
   }
 
-  // Generate fake data if none provided
   function generateFakeData() {
     const fakeData: any[] = []
     for (let i = 0; i < 50; i++) {
@@ -93,7 +84,7 @@ const TableData: React.FC<TableDataProp> = ({
         imageGroup: { name: `Group ${i}`, color: 'blue' },
         createdAt: new Date(),
         actions: {},
-        avatar: `https://i.pravatar.cc/150?img=${i}`, // Example avatar URL
+        avatar: `https://i.pravatar.cc/150?img=${i}`,
       })
     }
     return fakeData

@@ -48,7 +48,7 @@ const userGroupeSlice = createSlice({
       })
       .addCase(fetchUserGroupeById.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload as string // Payload is error message
+        state.error = action.payload as string
       })
   },
 })

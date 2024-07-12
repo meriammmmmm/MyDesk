@@ -2,6 +2,7 @@
 .input-field {
   @include flexbox(column, flex-start, flex-start);
   width: 100%;
+
   label {
     font-weight: 500;
     color: #000;

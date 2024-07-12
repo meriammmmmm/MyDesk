@@ -33,6 +33,7 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
   ]
 
   const tagOptions = sectionsData.map((el) => ({
+    index: el.id,
     label: el.label,
     value: el.label,
   }))
@@ -116,7 +117,6 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
   return (
     <div>
       <Upload onDrop={handleImageUpload} maxFiles={1} />
-
       <div className="create-container">
         <InputField
           field={{
@@ -167,14 +167,12 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         value={formData.description}
         onChange={handleChange}
       />
-
       <SelectComp
         options={tagOptions}
         label="Assign to an image group"
         value={formData.tag}
         setValue={(value: any) => handleFormChange({ ...formData, tag: value })}
       />
-
       <div className="personal-slider-container">
         <div className="personal-slider">
           <div className="title">
@@ -252,51 +250,21 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         </div>
         <p className="user-acount-status"> User Account Status</p>{' '}
       </div>
-
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
         <Button
-          type="submit"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            backgroundColor: '#0188F7',
-          }}
-          size="xl"
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
-        <Button
           type="button"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            color: '#0188F7',
-            border: '1px solid #0188F7',
-            backgroundColor: 'white',
-          }}
           onClick={() => {
             onClosePopup()
-            setFormData({
-              name: '',
-              logoUrl: '',
-              description: '',
-              dockerImage: '',
-              tag: [],
-              image: null,
-              statuss: true,
-              cpu: 2,
-              ramSize: 2,
-              diskSize: 2,
-            })
           }}
           size="xl"
+          className="cancel-button-form"
         >
           Cancel
         </Button>
-      </div>
+        <Button className="submit-button-form" type="submit" size="xl" onClick={handleSubmit}>
+          Confirm
+        </Button>
+      </div>{' '}
     </div>
   )
 }

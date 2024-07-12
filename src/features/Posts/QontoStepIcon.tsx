@@ -54,7 +54,7 @@ function QontoStepIcon(props: QontoStepIconProps) {
         [classes.completed]: completed,
       })}
     >
-      {completed ? <CheckCircleIcon /> : <IconComponent />}
+      <IconComponent />
     </div>
   )
 }

@@ -11,7 +11,7 @@ interface IFieldProps {
 }
 
 interface IInputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  formik?: any // Optional formik prop, adjust as per your needs
+  formik?: any
   field: IFieldProps
   onChange?: React.ChangeEventHandler<HTMLInputElement>
 }

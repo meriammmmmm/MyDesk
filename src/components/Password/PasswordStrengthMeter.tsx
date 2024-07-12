@@ -11,14 +11,13 @@ const PasswordStrengthMeter = ({ strength }: { strength: number }) => {
   }
 
   return (
-    <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between' }}>
-      {/* Render four colored lines */}
+    <div style={{ margin: ' 10px', gap: '10px', display: 'flex', justifyContent: 'space-between' }}>
       {[0, 1, 2, 3].map((index) => (
         <div
           key={index}
           style={{
             flex: 1,
-            height: '8px',
+            height: '5px',
             backgroundColor: getColor(index),
             borderRadius: '4px',
             transition: 'background-color 0.3s ease-in-out',

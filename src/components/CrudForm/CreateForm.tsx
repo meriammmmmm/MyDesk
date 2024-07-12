@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import InputField from '../InputField/InputField'
 import SelectComp from '../SelectComp/SelectComp'
-import { useAppDispatch, useAppSelector } from '../../store' // Use the custom hook
-import { unwrapResult } from '@reduxjs/toolkit' // Import unwrapResult
+import { useAppDispatch, useAppSelector } from '../../store'
+import { unwrapResult } from '@reduxjs/toolkit'
 import { addUser, fetchUsers } from '@src/store/slices/users/userThunk'
 import Button from '../Button/Button'
 import Switch from '@mui/material/Switch'
-import { Upload } from '../UploadImage/UploadImage' // Import the Upload component
+import { Upload } from '../UploadImage/UploadImage'
 import { fetchImages } from '@src/store/slices/images/imageThunk'
-
 import { message } from 'antd'
-// Define the FileWithPreview type
 type FileWithPreview = File & {
   preview?: string
 }
@@ -142,6 +140,8 @@ const CreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         label="Assign to a user group"
         value={formData.userGroupe}
         setValue={(value: any) => handleFormChange({ ...formData, userGroupe: value })}
+        touched={false}
+        error={null}
       />
       <SelectComp
         options={useroptions}

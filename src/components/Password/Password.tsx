@@ -105,7 +105,9 @@ const Password = ({ formData, setFormData }: any) => {
       />
       {passwordMatchError && <p style={{ color: 'red' }}>{passwordMatchError}</p>}
 
-      <button onClick={handleSubmit}>Update Password</button>
+      <button className="edit-profile-button" onClick={handleSubmit}>
+        Confirm
+      </button>
       {updateSuccess && <p>{updateSuccess}</p>}
     </section>
   )

@@ -34,14 +34,14 @@
 }
 
 .popup {
-  background-color: #fff; /* White background */
+  background-color: #fff;
   width: 80%;
-  max-width: 830px;
-  padding: 20px;
+  max-width: 901px;
+  padding: 35px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  /* Relative positioning for close button */
+  padding-top: 4rem;
 }
 
 .popup button {

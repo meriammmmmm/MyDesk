@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import InputField from '../InputField/InputField'
-import SelectComp from '../SelectComp/SelectComp'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { unwrapResult } from '@reduxjs/toolkit'
 import { addImages } from '@src/store/slices/images/imageThunk'
@@ -14,6 +13,8 @@ import ram from '../../assets/icons/ram.svg'
 import { Upload } from '../UploadImage/UploadImage'
 import { addImageGroupe, fetchImageGroupe } from '@src/store/slices/imageGroupe/imageGroupeThunk'
 import { message } from 'antd'
+import SelectComp from '../SelectComp/SelectComp'
+import SlectImageGroupe from '../SelectComp/SlectImageGroupe'
 
 // Define the FileWithPreview type
 type FileWithPreview = File & {
@@ -34,28 +35,27 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
     { id: 7, label: 'Privacy' },
   ]
 
-  const tagOptions = sectionsData.map((el) => ({ label: el.label, value: el.label }))
+  const tagOptions = sectionsData.map((el) => ({ index: el.id, label: el.label, value: el.label }))
 
   const [formData, setFormData] = useState({
     name: '',
     description: '',
     tag: [],
     imageGroupe: [],
-
     status: true,
   })
 
   const handleFormChange = (newValues: any) => {
-    setFormData(newValues)
+    setFormData((prevData) => ({ ...prevData, ...newValues }))
   }
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target
-    handleFormChange({ ...formData, [name]: value })
+    handleFormChange({ [name]: value })
   }
 
   const handleSwitchChange = (e: { target: { checked: any } }) => {
-    setFormData({ ...formData, status: e.target.checked })
+    setFormData((prevData) => ({ ...prevData, status: e.target.checked }))
   }
 
   const { images } = useAppSelector((state) => state.images)
@@ -70,34 +70,15 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
       const resultAction = await dispatch(addImageGroupe(formData))
       unwrapResult(resultAction)
 
-      setFormData({
-        name: '',
-        description: '',
-        tag: [],
-        imageGroupe: [],
+      console.log(formData)
 
-        status: true,
-      })
-
-      message.success('Image Groupe  created succsfully')
+      message.success('Image Groupe created successfully')
       onClosePopup()
       dispatch(fetchImageGroupe())
     } catch (error) {
       console.error('Failed to create image:', error)
       alert('Failed to create image. Please try again.')
     }
-  }
-
-  const marks = [
-    { value: 2, label: '2' },
-    { value: 4, label: '4' },
-    { value: 6, label: '6' },
-    { value: 8, label: '8' },
-    { value: 12, label: '12' },
-  ]
-
-  const valuetext = (value: any) => {
-    return `${value}`
   }
 
   return (
@@ -116,7 +97,6 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
           onChange={handleChange}
         />
       </div>
-
       <InputField
         field={{
           name: 'description',
@@ -129,21 +109,18 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         value={formData.description}
         onChange={handleChange}
       />
-
       <SelectComp
-        options={tagOptions}
         label="Assign to an image group"
         value={formData.tag}
-        setValue={(value: any) => handleFormChange({ ...formData, tag: value })}
+        setValue={(value: any) => handleFormChange({ tag: value })}
+        options={tagOptions}
       />
-
-      <SelectComp
+      <SlectImageGroupe
         options={options}
         label="Assign to an image group"
         value={formData.imageGroupe}
         setValue={(value: any) => handleFormChange({ imageGroupe: value })}
       />
-
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}>
           <Switch
@@ -155,47 +132,21 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
         </div>
         <p className="user-acount-status"> User Account Status</p>{' '}
       </div>
-
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
         <Button
-          type="submit"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            backgroundColor: '#0188F7',
-          }}
-          size="xl"
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
-        <Button
           type="button"
-          style={{
-            width: '26%',
-            fontSize: '17px',
-            marginTop: '30px',
-            color: '#0188F7',
-            border: '1px solid #0188F7',
-            backgroundColor: 'white',
-          }}
           onClick={() => {
             onClosePopup()
-            setFormData({
-              name: '',
-              description: '',
-              tag: [],
-              imageGroupe: [],
-
-              status: true,
-            })
           }}
           size="xl"
+          className="cancel-button-form"
         >
           Cancel
         </Button>
-      </div>
+        <Button className="submit-button-form" type="submit" size="xl" onClick={handleSubmit}>
+          Confirm
+        </Button>
+      </div>{' '}
     </div>
   )
 }

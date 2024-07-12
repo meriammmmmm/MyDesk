@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef, RefObject } from 'react'
 import avatar from '../../assets/images/avatr.png'
 import upload from '../../assets/icons/uplaod.svg'
 
-// Extending the File interface to include the preview property
 interface FileWithPreview extends File {
   preview?: string
 }
 
-function removeItems(arr: any[], item: number) {
+function removeItems(arr: FileWithPreview[] | void[], item: number) {
   for (let i = 0; i < item; i++) {
     arr.pop()
   }
@@ -79,7 +78,6 @@ function Upload({ onDrop, maxFiles = 1 }: UploadProps) {
         <div className="uploader-button">
           <img src={upload} alt="" />
           <div className="uploder-instruction">
-            {' '}
             <p>
               <span>Click to upload</span>
               or drag and drop

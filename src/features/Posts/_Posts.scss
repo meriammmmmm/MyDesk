@@ -54,6 +54,19 @@
       padding: 20px;
     }
   }
+
+  .edit-profile-button {
+    width: 180px;
+    height: 39.09px;
+    padding: 8.55px 17.09px 8.55px 12.82px;
+    border-radius: 8.55px;
+    align-items: center;
+    background: #0188f7;
+    border: 1px solid rgba(31, 186, 255, 1);
+    color: #ffffff;
+    font-size: 12px;
+    margin-top: 2rem;
+  }
 }
 
 .form-boat {
@@ -95,6 +108,7 @@
 }
 
 .register-boat-services {
+  background-color: #f0fafb;
   display: flex;
   padding: 3rem;
   @include mq(1700, max) {
@@ -158,7 +172,6 @@
   border-radius: 8px;
   opacity: 0px;
   background-color: white;
-  box-shadow: 0px 0px 6px 0px #cce7f8;
 }
 
 .makeStyles-stepperRoot-4 {
@@ -186,4 +199,15 @@
 /* styles.css */
 .MuiStepLabel-root.Mui-active {
   background-color: white;
+}
+.MuiStep-horizontal {
+  background: white !important;
+  border-radius: 4px;
+  box-shadow: 0px 0px 6px 0px #cce7f8 !important;
+}
+.makeStyles-active-7 {
+  color: #57a6bd !important;
+}
+.makeStyles-completed-8 {
+  color: #57a6bd !important;
 }

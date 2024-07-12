@@ -6,10 +6,10 @@ import UserGroupeActionControl from '@src/components/userGroupeActionControl/Act
 
 interface TableDataProp {
   data: readonly object[] | undefined
-  isUserTable?: any
-  posts?: any
-  GuestUser?: any
-  group?: any
+  isUserTable?: boolean
+  posts?: string[]
+  GuestUser?: string
+  group?: string
 }
 
 const GroupeTable: React.FC<TableDataProp> = ({ data }: TableDataProp) => {

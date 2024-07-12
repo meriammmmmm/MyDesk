@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
-import SimpleCrudForm from '../CrudForm/CreateForm'
-import { Upload } from '../UploadImage/UploadImage'
-import Button from '../Button/Button'
+
 import CreateGroupeForm from '../CrudForm/CreateGroupeForm'
 
 interface PopupProps {
@@ -10,11 +8,11 @@ interface PopupProps {
 }
 
 const GroupePopUp: React.FC<PopupProps> = ({ onClose }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(true) // State to control popup visibility
+  const [isPopupOpen, setIsPopupOpen] = useState(true)
 
   const handleClose = () => {
     setIsPopupOpen(false)
-    onClose() // Call onClose to notify parent component
+    onClose()
   }
   return (
     <div className={`popup-container ${isPopupOpen ? 'show' : 'hide'}`}>

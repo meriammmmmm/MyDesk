@@ -88,7 +88,16 @@ const Navbar = () => {
         <a style={{ color: '#177C9A' }} href="/user">
           Switch Admin
         </a>
-      ), // Navigate to /user
+      ),
+      icon: <ProfileIcon style={{ stroke: '#177C9A', width: '18px', height: '18px' }} />,
+    },
+    {
+      key: '2',
+      label: (
+        <a style={{ color: '#177C9A' }} href="/editProfile">
+          Edit Profile{' '}
+        </a>
+      ),
       icon: <ProfileIcon style={{ stroke: '#177C9A', width: '18px', height: '18px' }} />,
     },
     {
@@ -124,30 +133,48 @@ const Navbar = () => {
               }}
               spaceBetween={10}
             >
-              {filteredImages.map((item: any, index: any) => (
-                <SwiperSlide key={index}>
-                  <div className="item-image">
-                    <img src={item.image} alt={item.title} className="item-image" />
-                    <div className="item-informatin">
-                      <h2 className="item-title">{item.name}</h2>
-                      <div className="item-timer">
-                        <img src={timer} alt="" className="timer" />
-                        <p className="item-date">
-                          {calculateElapsedTime(index, item.startTime)}
-                        </p>{' '}
+              {filteredImages.map(
+                (
+                  item: {
+                    image: string | undefined
+                    title: string | undefined
+                    name:
+                      | string
+                      | number
+                      | boolean
+                      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+                      | React.ReactFragment
+                      | React.ReactPortal
+                      | null
+                      | undefined
+                    startTime: any
+                  },
+                  index: React.Key | null | undefined,
+                ) => (
+                  <SwiperSlide key={index}>
+                    <div className="item-image">
+                      <img src={item.image} alt={item.title} className="item-image" />
+                      <div className="item-informatin">
+                        <h2 className="item-title">{item.name}</h2>
+                        <div className="item-timer">
+                          <img src={timer} alt="" className="timer" />
+                          <p className="item-date">
+                            {calculateElapsedTime(index, item.startTime)}
+                          </p>{' '}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <img
-                    style={{ width: '24px' }}
-                    src={turn}
-                    className="turn-off"
-                    alt=""
-                    onClick={() => toggleStatus(item)}
-                  />
-                </SwiperSlide>
-              ))}
+                    <img
+                      style={{ width: '24px' }}
+                      src={turn}
+                      className="turn-off"
+                      alt=""
+                      onClick={() => toggleStatus(item)}
+                    />
+                  </SwiperSlide>
+                ),
+              )}
             </Swiper>
           ) : (
             filteredImages.map((item: any, index: any) => (

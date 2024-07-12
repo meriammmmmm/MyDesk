@@ -93,7 +93,9 @@ const ImageTableData: React.FC<TableDataProp> = ({
       dataIndex: 'label',
       key: 'label ',
       render: (label: any) => {
-        return <Tag>{label} Performance Desktop</Tag>
+        return (
+          <Tag style={{ ...labelStyles[label], borderRadius: 4 }}>{label} Performance Desktop</Tag>
+        )
       },
     },
     {

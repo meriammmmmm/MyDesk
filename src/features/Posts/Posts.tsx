@@ -15,8 +15,7 @@ import Password from '@src/components/Password/Password'
 import Establishment from '@src/components/Establishment/Establishment'
 import QontoStepIcon from './QontoStepIcon'
 import { useSelector } from 'react-redux'
-import { loadLanguages } from 'i18next'
-import { getCurrentUser } from '@src/store/slices/auth/authThunk'
+
 import { PlaceOrder } from '@src/components/Stepper/Stepper'
 
 const QontoConnector = withStyles({
@@ -120,7 +119,6 @@ const FormBoat = () => {
 
   const fetchCurrentUser = async () => {
     try {
-      // Simulate API call to get current user data
     } catch (error: any) {
       console.error('Error fetching current user:', error.message)
     }
@@ -128,10 +126,6 @@ const FormBoat = () => {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
-  }
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
   }
 
   const handleReset = () => {
@@ -253,18 +247,7 @@ const FormBoat = () => {
                     <>
                       <Button
                         onClick={handleConfirm}
-                        style={{
-                          width: '180px',
-                          height: '39.09px',
-                          padding: '8.55px 17.09px 8.55px 12.82px',
-                          borderRadius: '8.55px',
-                          justifyContent: 'space-between',
-                          background: '#0188F7',
-                          border: '1px solid rgba(31, 186, 255, 1)',
-                          color: '#FFFFFF',
-                          fontSize: '1.25rem',
-                          marginTop: '2rem',
-                        }}
+                        className="edit-profile-button"
                         variant="outlined"
                       >
                         Confirm

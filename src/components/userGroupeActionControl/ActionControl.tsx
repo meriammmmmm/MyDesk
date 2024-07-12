@@ -28,8 +28,6 @@ const UserGroupeActionControl: React.FC<{
     dispatch(fetchUserGroupeById(id))
   }
 
-  const { userGroupe } = useAppSelector((state) => state.usergroupes)
-
   const handleRemove = (userGroupeId: string) => {
     Swal.fire({
       title: 'Delete User Groupe',

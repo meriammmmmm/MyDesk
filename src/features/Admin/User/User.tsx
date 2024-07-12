@@ -31,8 +31,6 @@ const User = () => {
         />
         <TableData data={users} />
       </div>
-
-      <DrawerComp />
     </div>
   )
 }
