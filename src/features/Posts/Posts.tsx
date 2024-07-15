@@ -52,7 +52,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px 28px',
     borderRadius: '10px',
     background: '#E5F4FD',
-    width: '652px',
+    maxWidth: '652px',
+    width: '100%',
+    marginBottom: '1rem',
   },
   stepLabel: {
     fontSize: '15px',

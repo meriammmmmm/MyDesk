@@ -1,10 +1,9 @@
 import { Key, useEffect, useState } from 'react'
-
 import { useAppDispatch } from '@src/store'
 import { fetchImages, editImages } from '@src/store/slices/images/imageThunk'
 import { useSelector } from 'react-redux'
 import Modal from './components/DashbordModal/DashbordModal'
-
+import notFound from '../../assets/images/not-found.webp'
 export interface Tool {
   name: string
   image: string
@@ -107,7 +106,10 @@ const Dashboard = () => {
 
   const getFilteredImages = () => {
     if (selectedView === 'All') return images
-    return images.filter((image: any) => image.tag && image.tag.includes(selectedView))
+    const filteredImages = images.filter(
+      (image: any) => image.tag && image.tag.includes(selectedView),
+    )
+    return filteredImages.length > 0 ? filteredImages : []
   }
 
   const handleSwitch = (view: any) => {
@@ -118,12 +120,16 @@ const Dashboard = () => {
     <>
       {' '}
       <div className="tool-list">
-        {getFilteredImages().map((tool: Tool, index: Key | null | undefined) => (
-          <div key={index} className="tool" onClick={() => handleClick(tool)}>
-            <img src={tool.image} />
-            <h3>{tool.name}</h3>
-          </div>
-        ))}
+        {getFilteredImages().length > 0 ? (
+          getFilteredImages().map((tool: Tool, index: Key | null | undefined) => (
+            <div key={index} className="tool" onClick={() => handleClick(tool)}>
+              <img src={tool.image} />
+              <h3>{tool.name}</h3>
+            </div>
+          ))
+        ) : (
+          <img src={notFound} alt="notFound" className="no-image-found" />
+        )}
         {selectedTool && (
           <Modal
             selectedTool={selectedTool}

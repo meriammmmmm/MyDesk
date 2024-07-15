@@ -111,8 +111,9 @@
   background-color: #f0fafb;
   display: flex;
   padding: 3rem;
+  margin: 2rem;
   @include mq(1700, max) {
-    width: 89%;
+    width: 100%;
   }
   &-right {
     width: 415px;
@@ -174,11 +175,11 @@
   background-color: white;
 }
 
-.makeStyles-stepperRoot-4 {
-  @include mq(1700, max) {
-    width: 114%;
-  }
-}
+// .makeStyles-stepperRoot-4 {
+//   @include mq(1700, max) {
+//     width: 114%;
+//   }
+// }
 .organization-stepper {
   width: 1369px;
   padding: 0px 44px 0px;

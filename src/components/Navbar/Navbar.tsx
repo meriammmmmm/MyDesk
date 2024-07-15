@@ -18,6 +18,7 @@ import turn from '../../assets/icons/navbar/turn-off.svg'
 import { logout } from '@src/store/slices/auth/authThunk'
 import { fetchImages, editImages } from '@src/store/slices/images/imageThunk'
 import { useSelector } from 'react-redux'
+import { Navigation } from 'swiper/modules'
 
 const Navbar = () => {
   const [transition, setTransition] = useState<boolean>(false)
@@ -109,52 +110,71 @@ const Navbar = () => {
   ]
 
   return (
-    <div className="navbar">
+    <div className="navbar-dashboard">
       <div className="navbar-left">
         <img src={logo} className="navbar-left-logo" alt="logo" />
         <div className="navbar-left-home">
           <img src={home} alt="home" className="navbar-left-home-image" />
         </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '1rem' }} className="nav-swiper">
           {filteredImages.length > 4 ? (
-            <Swiper
-              className="swiper-reviews"
-              slidesPerView={1}
-              breakpoints={{
-                700: {
-                  slidesPerView: 2,
-                },
-                1250: {
-                  slidesPerView: 4,
-                },
-              }}
-              spaceBetween={10}
-            >
-              {filteredImages.map((item: any, index: number) => (
-                <SwiperSlide key={index}>
-                  <div className="item-image">
-                    <img src={item.image} alt={item.title} className="item-image" />
-                    <div className="item-informatin">
-                      <h2 className="item-title">{item.name}</h2>
-                      <div className="item-timer">
-                        <img src={timer} alt="" className="timer" />
-                        <p className="item-date">
-                          {calculateElapsedTime(index, item.startTime)}
-                        </p>{' '}
+            <>
+              <Swiper
+                className="swiper-reviews"
+                slidesPerView={1}
+                breakpoints={{
+                  700: {
+                    slidesPerView: 2,
+                  },
+                  1368: {
+                    slidesPerView: 4,
+                  },
+                }}
+                spaceBetween={10}
+                navigation={{
+                  nextEl: '.swiper-button-next-cus',
+                  prevEl: '.swiper-button-prev-cus',
+                }}
+                modules={[Navigation]}
+              >
+                {filteredImages.map((item: any, index: number) => (
+                  <SwiperSlide key={index}>
+                    <div className="item-image">
+                      <img src={item.image} alt={item.title} className="item-image" />
+                      <div className="item-informatin">
+                        <h2 className="item-title">{item.name}</h2>
+                        <div className="item-timer">
+                          <img src={timer} alt="" className="timer" />
+                          <p className="item-date">
+                            {calculateElapsedTime(index, item.startTime)}
+                          </p>{' '}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <img
-                    style={{ width: '24px' }}
-                    src={turn}
-                    className="turn-off"
-                    alt=""
-                    onClick={() => toggleStatus(item)}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                    <img
+                      style={{ width: '24px' }}
+                      src={turn}
+                      className="turn-off"
+                      alt=""
+                      onClick={() => toggleStatus(item)}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div
+                style={{
+                  scale: '0.5',
+                }}
+                className="swiper-button-next-cus swiper-button-next"
+              ></div>
+              <div
+                style={{
+                  scale: '0.5',
+                }}
+                className="swiper-button-prev-cus swiper-button-prev"
+              ></div>
+            </>
           ) : (
             filteredImages.map((item: any, index: number) => (
               <div key={index}>
