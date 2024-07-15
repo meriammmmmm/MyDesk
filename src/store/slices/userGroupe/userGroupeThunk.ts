@@ -7,13 +7,16 @@ import {
   getUserGroupe,
   getUserGroupeById,
 } from '@src/services/userGroupeAuth'
-
+interface ImageDataType {
+  id?: string
+  status?: boolean
+}
 export const fetchUserGroupe = createAsyncThunk('userGroupe/fetchUserGroupe', async () => {
   return await getUserGroupe()
 })
 export const addUserGroupe = createAsyncThunk(
   'UserGroupe/addUserGroupe',
-  async (userData: any, { rejectWithValue }) => {
+  async (userData: ImageDataType, { rejectWithValue }) => {
     try {
       const response = await createEditUserGroupe(userData, userData?.id)
       if (response.status === 201) {
@@ -46,7 +49,7 @@ export const fetchUserGroupeById = createAsyncThunk(
 )
 export const editUserGroupe = createAsyncThunk(
   'user/editUser',
-  async (userData: any, { rejectWithValue }) => {
+  async (userData: ImageDataType, { rejectWithValue }) => {
     try {
       const response = await createEditUserGroupe(userData, userData?.id)
       if (response.status === 200) {

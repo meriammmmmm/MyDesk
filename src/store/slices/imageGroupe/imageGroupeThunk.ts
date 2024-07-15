@@ -1,5 +1,3 @@
-// cabinsSlice.js
-
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import {
   createEditImageGroupe,
@@ -7,13 +5,21 @@ import {
   getImageGroupe,
   getImageGroupeById,
 } from '@src/services/ImageGroupeAuth'
+interface ImageDataType {
+  id?: number
+  name: string
+  description: string
+  tag: never[]
+  imageGroupe: never[]
+  status: boolean
+}
 
 export const fetchImageGroupe = createAsyncThunk('imageGroupe/fetchImageGroupe', async () => {
   return await getImageGroupe()
 })
 export const addImageGroupe = createAsyncThunk(
   'ImageGroupe/addImageGroupe',
-  async (imageData: any, { rejectWithValue }) => {
+  async (imageData: ImageDataType, { rejectWithValue }) => {
     try {
       const response = await createEditImageGroupe(imageData, imageData?.id)
       if (response.status === 201) {
@@ -46,7 +52,7 @@ export const fetchImageGroupeById = createAsyncThunk(
 )
 export const editImageGroupe = createAsyncThunk(
   'imageGroupe/editImageGroupe',
-  async (imageGroupe: any, { rejectWithValue }) => {
+  async (imageGroupe: ImageDataType, { rejectWithValue }) => {
     try {
       const response = await createEditImageGroupe(imageGroupe, imageGroupe?.id)
       if (response.status === 200) {

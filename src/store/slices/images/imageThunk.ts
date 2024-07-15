@@ -8,13 +8,17 @@ import {
   getImages,
   updateImages,
 } from '@src/services/imageApi'
-
+interface ImageDataType {
+  id?: number
+  status?: boolean
+  startTime?: any
+}
 export const fetchImages = createAsyncThunk('images/fetchImages', async () => {
   return await getImages()
 })
 export const editImages = createAsyncThunk(
   'images/editImages',
-  async ({ newImagesData, id }: { newImagesData: any; id: string }, thunkAPI) => {
+  async ({ newImagesData, id }: { newImagesData: ImageDataType; id: string }, thunkAPI) => {
     try {
       if (newImagesData.status) {
         newImagesData.startTime = Date.now()
@@ -31,7 +35,7 @@ export const editImages = createAsyncThunk(
 )
 export const addImages = createAsyncThunk(
   'images/addImages',
-  async (userData: any, { rejectWithValue }) => {
+  async (userData: ImageDataType, { rejectWithValue }) => {
     try {
       const response = await createEditImages(userData, userData?.id)
       if (response.status === 201) {
@@ -51,7 +55,7 @@ export const addImages = createAsyncThunk(
 )
 export const PatchImages = createAsyncThunk(
   'images/PatchImages',
-  async (userData: any, { rejectWithValue }) => {
+  async (userData: ImageDataType, { rejectWithValue }) => {
     try {
       const response = await createEditImages(userData, userData?.id)
       if (response.status === 200) {

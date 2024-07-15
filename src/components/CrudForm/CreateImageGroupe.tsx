@@ -44,14 +44,29 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
     imageGroupe: [],
     status: true,
   })
+  interface ImageDataType {
+    id?: number
+    name: string
+    description: string
+    tag: never[]
+    imageGroupe: never[]
+    status: boolean
+  }
 
-  const handleFormChange = (newValues: any) => {
+  const handleFormChange = (newValues: ImageDataType) => {
     setFormData((prevData) => ({ ...prevData, ...newValues }))
   }
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target
-    handleFormChange({ [name]: value })
+    handleFormChange({
+      [name]: value,
+      name: '',
+      description: '',
+      tag: [],
+      imageGroupe: [],
+      status: false,
+    })
   }
 
   const handleSwitchChange = (e: { target: { checked: any } }) => {
@@ -112,14 +127,30 @@ const ImageCreateForm = ({ onClosePopup }: { onClosePopup: () => void }) => {
       <SelectComp
         label="Assign to an image group"
         value={formData.tag}
-        setValue={(value: any) => handleFormChange({ tag: value })}
+        setValue={(value: any) =>
+          handleFormChange({
+            tag: value,
+            name: '',
+            description: '',
+            imageGroupe: [],
+            status: false,
+          })
+        }
         options={tagOptions}
       />
       <SlectImageGroupe
         options={options}
         label="Assign to an image group"
         value={formData.imageGroupe}
-        setValue={(value: any) => handleFormChange({ imageGroupe: value })}
+        setValue={(value: any) =>
+          handleFormChange({
+            imageGroupe: value,
+            name: '',
+            description: '',
+            tag: [],
+            status: false,
+          })
+        }
       />
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}>

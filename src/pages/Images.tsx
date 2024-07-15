@@ -1,2 +1,2 @@
-import User from '@src/features/Admin/Images/ImagesGroupeSwitcher'
-export default User
+import Images from '@src/features/Admin/Images/ImagesGroupeSwitcher'
+export default Images

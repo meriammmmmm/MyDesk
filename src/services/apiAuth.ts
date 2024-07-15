@@ -15,7 +15,7 @@ export interface User {
   avatar: string
 }
 
-export async function signup(query: any): Promise<any> {
+export async function signup() {
   let { data, error } = await supabase.auth.signUp({
     email: 'someone@email.com',
     password: 'XNYQLdHxUPevoTtRhjxN',
@@ -26,7 +26,7 @@ export async function signup(query: any): Promise<any> {
   return data.user
 }
 
-export async function login({ email, password }: AuthPayload): Promise<any> {
+export async function login({ email, password }: AuthPayload) {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -53,7 +53,15 @@ export async function logout(): Promise<void> {
   const { error } = await supabase.auth.signOut()
   if (error) throw new Error('Logout error')
 }
-
+interface UserData {
+  fullName?: string
+  username?: string
+  organization?: string
+  organizationName?: string
+  address?: string
+  avatar?: File
+  // Add other properties if necessary
+}
 export type UpdateUserPayload = {
   password?: string
   fullName?: string
@@ -62,6 +70,7 @@ export type UpdateUserPayload = {
   organizationName?: string
   address?: string
   avatar?: File
+  data?: UserData
 }
 
 export async function updateCurrentUser({
@@ -72,9 +81,9 @@ export async function updateCurrentUser({
   organizationName,
   address,
   avatar,
-}: UpdateUserPayload): Promise<any> {
+}: UpdateUserPayload) {
   try {
-    let updateData: any = {}
+    let updateData: UpdateUserPayload = {}
 
     // Prepare the updateData object
     if (password) updateData.password = password

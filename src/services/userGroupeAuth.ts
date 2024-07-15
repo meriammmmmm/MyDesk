@@ -1,7 +1,8 @@
-// apiCabins.js
-
 import supabase, { supabaseUrl } from './supabase'
-
+interface ImageDataType {
+  id?: string
+  image?: File | string // Allow image to be a File or a URL string
+}
 export async function getUserGroupe() {
   const { data, error } = await supabase.from('UserGroupe').select('*')
 
@@ -13,7 +14,7 @@ export async function getUserGroupe() {
   return data
 }
 
-export async function deleteUserGroupe(id: any) {
+export async function deleteUserGroupe(id: string) {
   const { data, error } = await supabase.from('UserGroupe').delete().eq('id', id)
 
   if (error) {
@@ -24,8 +25,8 @@ export async function deleteUserGroupe(id: any) {
   return data
 }
 
-export async function createEditUserGroupe(newUserGroupe: any, id?: any) {
-  let imagePath = null
+export async function createEditUserGroupe(newUserGroupe: ImageDataType, id?: string) {
+  let imagePath: string | null = null
 
   if (newUserGroupe.image instanceof File) {
     const imageName = `${Math.random()}-${newUserGroupe.image.name.replaceAll('/', '')}`
@@ -43,7 +44,7 @@ export async function createEditUserGroupe(newUserGroupe: any, id?: any) {
     imagePath = newUserGroupe.image
   }
 
-  let query: any
+  let query
 
   if (!id) {
     query = supabase.from('UserGroupe').insert([{ ...newUserGroupe, image: imagePath }])
@@ -63,7 +64,7 @@ export async function createEditUserGroupe(newUserGroupe: any, id?: any) {
 
   return data
 }
-export async function getUserGroupeById(id: any) {
+export async function getUserGroupeById(id: string) {
   const { data, error } = await supabase.from('UserGroupe').select('*').eq('id', id).single()
 
   if (error) {

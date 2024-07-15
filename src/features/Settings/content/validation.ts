@@ -5,12 +5,7 @@ export const listOfFilds = [
     label: 'Users Api',
     required: true,
   },
-  // {
-  //   name: 'endpointRefresh',
-  //   pholder: 'Enter the endpoint of refresh token',
-  //   label: 'Refresh Token Api',
-  //   required: false,
-  // },
+
   { name: 'tokenName', pholder: 'Enter the token name', label: 'Token Name', required: true },
   {
     name: 'accessToken',
@@ -18,12 +13,7 @@ export const listOfFilds = [
     label: 'Access Token',
     required: true,
   },
-  // {
-  //   name: 'refreshToken',
-  //   pholder: 'Enter the refresh token',
-  //   label: 'Refresh Token',
-  //   required: false,
-  // },
+
   {
     name: 'pathOfData',
     pholder: 'ex : data.docs._id',
