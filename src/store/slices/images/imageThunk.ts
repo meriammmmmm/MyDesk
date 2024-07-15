@@ -12,6 +12,9 @@ interface ImageDataType {
   id?: number
   status?: boolean
   startTime?: any
+  cpu?: number
+  diskSize?: number
+  ramSize?: number
 }
 export const fetchImages = createAsyncThunk('images/fetchImages', async () => {
   return await getImages()
